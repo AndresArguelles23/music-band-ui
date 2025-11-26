@@ -1,20 +1,20 @@
 .section {
-  padding: var(--section-spacing) 0;
+  padding: calc(var(--section-spacing) * 1.1) 0;
 }
 
 .inner {
   max-width: 1120px;
   color: var(--color-text);
   display: grid;
-  gap: clamp(var(--space-lg), 3vw, calc(var(--section-gap) * 0.95));
+  gap: clamp(var(--space-xl), 3.5vw, calc(var(--section-gap) * 1.2));
 }
 
 .header {
   display: grid;
-  gap: var(--space-xs);
+  gap: var(--space-sm);
   align-content: start;
-  padding-left: var(--space-sm);
-  border-left: 3px solid rgba(99, 102, 241, 0.6);
+  padding-left: calc(var(--space-sm) * 1.6);
+  border-left: 3px solid rgba(99, 102, 241, 0.65);
   max-width: 640px;
 }
 
@@ -41,18 +41,20 @@
   color: var(--color-text-muted);
   font-weight: 600;
   font-size: 1.125rem;
+  margin-top: var(--space-xxs);
 }
 
 .grid {
   display: grid;
   grid-template-columns: 1.1fr 0.9fr;
-  gap: clamp(var(--space-lg), 3vw, calc(var(--space-xl) * 1.1));
+  gap: clamp(var(--space-xl), 4vw, calc(var(--section-gap) * 1.15));
   align-items: center;
+  padding: calc(var(--space-md) * 1.2) clamp(var(--space-sm), 3vw, var(--space-lg)) 0;
 }
 
 .copy {
   display: grid;
-  gap: var(--content-gap);
+  gap: calc(var(--content-gap) * 1.15);
   color: var(--color-text-muted);
   max-width: 680px;
 }

@@ -4,8 +4,8 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: clamp(var(--section-gap), 4vw, calc(var(--section-gap) * 1.35));
-  align-items: start;
-  padding: calc(var(--section-spacing) * 1.35) 0 var(--section-spacing);
+  align-items: center;
+  padding: calc(var(--section-spacing) * 1.5) 0 calc(var(--section-spacing) * 1.1);
 }
 
 .hero::before {
@@ -27,20 +27,20 @@
 
 .copy {
   display: grid;
-  gap: var(--content-gap);
+  gap: calc(var(--content-gap) * 1.2);
   color: var(--color-text-muted);
   max-width: 640px;
 }
 
 .subtitle {
   max-width: 560px;
-  margin: 0 0 calc(var(--space-lg) * 1.1);
+  margin: 0 0 calc(var(--space-xl) * 0.8);
   font-size: 1.05rem;
 }
 
 .tagline {
   display: inline-block;
-  padding: var(--space-xs) var(--space-sm);
+  padding: calc(var(--space-xs) * 1.25) calc(var(--space-sm) * 1.1);
   border-radius: 999px;
   background: rgba(99, 102, 241, 0.12);
   color: #c4b5fd;
@@ -54,8 +54,9 @@
 .actions {
   display: flex;
   align-items: center;
-  gap: clamp(var(--space-sm), 2vw, var(--space-lg));
+  gap: clamp(var(--space-md), 3vw, calc(var(--space-xl) * 0.9));
   flex-wrap: wrap;
+  padding-top: var(--space-sm);
 }
 
 .primary,
