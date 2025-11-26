@@ -38,8 +38,8 @@
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: clamp(var(--space-xl), 2.8vw, calc(var(--section-gap) * 1.25));
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: clamp(var(--space-xl), 2.8vw, calc(var(--section-gap) * 1.4));
   margin: calc(var(--section-gap) * 1.1) 0 0;
 }
 
@@ -53,7 +53,7 @@
   background-size: 100% 100%, 220% 220%;
   background-position: center, 0% 50%;
   border-radius: 18px;
-  padding: clamp(var(--space-lg), 2.7vw, calc(var(--space-xl) - 0.05rem));
+  padding: clamp(var(--space-lg), 2.7vw, calc(var(--space-xl) * 1.05));
   border: 1px solid transparent;
   color: var(--color-text);
   box-shadow: 0 20px 44px rgba(0, 0, 0, 0.32), 18px 20px 32px rgba(94, 234, 212, 0.08);
@@ -67,6 +67,30 @@
   animation:
     fadeUp 480ms ease forwards var(--delay, 0ms),
     borderShift 14s linear infinite;
+  grid-column: span 4;
+}
+
+.card:nth-child(2) {
+  grid-column: span 5;
+  margin-top: clamp(var(--space-md), 2vw, var(--space-xl));
+}
+
+.card:nth-child(3) {
+  grid-column: span 3;
+  align-self: stretch;
+}
+
+@media (max-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
+
+  .card,
+  .card:nth-child(2),
+  .card:nth-child(3) {
+    grid-column: span 6;
+    margin-top: 0;
+  }
 }
 
 .media {
@@ -213,9 +237,15 @@
     padding: calc(var(--section-spacing) * 0.85) 0 calc(var(--section-spacing) * 0.6);
   }
 
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
   .card {
     padding: var(--space-md);
     gap: var(--space-sm);
+    grid-column: 1 / -1;
+    margin-top: 0;
   }
 
   .media {
