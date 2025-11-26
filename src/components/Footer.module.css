@@ -42,6 +42,76 @@
   gap: var(--space-md);
 }
 
+.brandRow {
+  margin-top: var(--space-lg);
+  padding-top: var(--space-md);
+  border-top: 1px solid var(--color-border);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--space-md);
+  align-items: center;
+}
+
+.brandIdentity {
+  display: grid;
+  gap: var(--space-2xs);
+}
+
+.brandName {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.socialBlock {
+  display: grid;
+  gap: var(--space-2xs);
+  justify-items: start;
+}
+
+.socialLabel {
+  margin: 0;
+  color: var(--color-text-muted);
+  font-weight: 600;
+}
+
+.socialLinks {
+  display: flex;
+  gap: var(--space-sm);
+}
+
+.socialIcon {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid transparent;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  text-decoration: none;
+}
+
+.socialIcon:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.18);
+}
+
+.icon {
+  width: 20px;
+  height: 20px;
+}
+
+.copy {
+  margin: 0;
+  justify-self: end;
+  color: var(--color-text-muted);
+  font-weight: 600;
+  letter-spacing: 0.03em;
+}
+
 .card {
   padding: var(--space-md);
   border-radius: 14px;
@@ -103,5 +173,14 @@
 @media (max-width: 640px) {
   .footer {
     padding: calc(var(--section-spacing) * 0.85) 0 var(--section-spacing);
+  }
+
+  .brandRow {
+    grid-template-columns: 1fr;
+    justify-items: start;
+  }
+
+  .copy {
+    justify-self: start;
   }
 }
