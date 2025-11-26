@@ -1,17 +1,10 @@
-import { useSectionVisibility } from '../hooks/useSectionVisibility'
 import styles from './About.module.css'
 
 const ensembleImage = '/images/about-ensemble.jpg.avif'
 
 const About = () => {
-  const { ref, isVisible } = useSectionVisibility()
-
   return (
-    <section
-      ref={ref}
-      className={`${styles.section} container ${isVisible ? 'is-visible' : ''}`}
-      id="about"
-    >
+    <section className={`${styles.section} container`} id="about">
       <div className={styles.inner}>
         <header className={styles.header}>
           <p className={styles.overline}>Sobre el colectivo</p>

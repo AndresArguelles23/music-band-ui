@@ -1,6 +1,5 @@
 import { useId, useState } from 'react'
 
-import { useSectionVisibility } from '../hooks/useSectionVisibility'
 import styles from './FAQ.module.css'
 
 type FAQItem = {
@@ -32,7 +31,6 @@ const faqs: FAQItem[] = [
 ]
 
 const FAQ = () => {
-  const { ref, isVisible } = useSectionVisibility()
   const [openIndex, setOpenIndex] = useState<number | null>(0)
   const panelPrefix = useId()
 
@@ -41,11 +39,7 @@ const FAQ = () => {
   }
 
   return (
-    <section
-      ref={ref}
-      className={`${styles.section} container ${isVisible ? 'is-visible' : ''}`}
-      id="faq"
-    >
+    <section className={`${styles.section} container`} id="faq">
       <div className={styles.header}>
         <p className={styles.kicker}>Preguntas frecuentes</p>
         <h2>Todo lo que necesitas saber para armar tu próximo show.</h2>
