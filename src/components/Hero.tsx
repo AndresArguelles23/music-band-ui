@@ -22,7 +22,16 @@ const Hero = () => {
         </div>
       </div>
       <div className={styles.visual}>
-        <img src={heroGraphic} alt="Escena musical en vivo" loading="lazy" />
+        <div className={styles.visualFrame}>
+          <div className={styles.badges} aria-hidden="true">
+            <span className={styles.badgePrimary}>Setlist en vivo</span>
+            <span className={styles.badgeSecondary}>Luz y sonido incluidos</span>
+          </div>
+          <div className={styles.imagePanel}>
+            <img src={heroGraphic} alt="Escena musical en vivo" loading="lazy" />
+            <span className={styles.cornerPulse} aria-hidden="true" />
+          </div>
+        </div>
       </div>
     </section>
   )
