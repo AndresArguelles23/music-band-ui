@@ -36,10 +36,6 @@ const Hero = () => {
       </div>
       <div className={styles.visual}>
         <img src={heroGraphic} alt="Escena musical en vivo" loading="lazy" />
-        <div className={styles.badge}>
-          <span className={styles.badgeTitle}>Backstage Pass</span>
-          <p>Acceso a coaching para tu crew y soporte 24/7 durante la gira.</p>
-        </div>
       </div>
     </section>
   )
