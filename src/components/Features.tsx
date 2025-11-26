@@ -53,49 +53,62 @@ const services = [
 const Features = () => {
   return (
     <section className={`${styles.section} container`} id="features">
-      <div className={styles.header}>
-        <p className={styles.kicker}>Servicios clave</p>
-        <h2>Sonido, estrategia y logística sin perder el estilo.</h2>
-        <p className={styles.lead}>
-          Acompañamos a bandas emergentes y artistas consolidados para que cada lanzamiento y
-          cada show sume a su historia.
-        </p>
-      </div>
-      <div className={styles.list}>
-        {services.map((service, index) => (
-          <article
-            key={service.title}
-            className={styles.service}
-            style={{ '--delay': `${index * 120}ms` } as CSSProperties }
-          >
-            <div className={styles.serviceHeader}>
-              <span className={styles.badge}>{String(index + 1).padStart(2, '0')}</span>
-              <div className={styles.titleBlock}>
-                <h3>{service.title}</h3>
-                <p className={styles.description}>{service.description}</p>
-                <div className={styles.metaRow}>
-                  <span className={styles.meta}>{service.includes}</span>
-                  <span className={styles.meta}>{service.idealFor}</span>
+      <div className={styles.inner}>
+        <header className={styles.header}>
+          <p className={styles.kicker}>Servicios clave</p>
+          <h2>Sonido, estrategia y logística sin perder el estilo.</h2>
+          <p className={styles.lead}>
+            Acompañamos a bandas emergentes y artistas consolidados para que cada lanzamiento y
+            cada show sume a su historia.
+          </p>
+        </header>
+
+        <div className={styles.list}>
+          {services.map((service, index) => (
+            <article
+              key={service.title}
+              className={styles.service}
+              style={{ '--delay': `${index * 120}ms` } as CSSProperties }
+            >
+              <div className={styles.copy}>
+                <div className={styles.titleRow}>
+                  <span className={styles.badge}>{String(index + 1).padStart(2, '0')}</span>
+                  <div className={styles.titleBlock}>
+                    <h3>{service.title}</h3>
+                    <p className={styles.description}>{service.description}</p>
+                  </div>
                 </div>
+
+                <div className={styles.metaGrid}>
+                  <div className={styles.metaItem}>
+                    <p className={styles.metaLabel}>Incluye</p>
+                    <p className={styles.meta}>{service.includes}</p>
+                  </div>
+                  <div className={styles.metaItem}>
+                    <p className={styles.metaLabel}>Ideal para</p>
+                    <p className={styles.meta}>{service.idealFor}</p>
+                  </div>
+                </div>
+
+                <ul className={styles.points} aria-label={`Aspectos clave de ${service.title}`}>
+                  {service.highlights.map((point) => (
+                    <li key={point.text}>
+                      <span className={styles.pointIcon} aria-hidden>
+                        {point.icon}
+                      </span>
+                      <span className={styles.pointText}>{point.text}</span>
+                    </li>
+                  ))}
+                </ul>
               </div>
-            </div>
-            <div className={styles.contentRow}>
+
               <figure className={styles.media}>
                 <img className="imageHighlight" src={service.image} alt={service.alt} loading="lazy" />
+                <figcaption>Escenas que cuentan la energía y el enfoque de cada propuesta.</figcaption>
               </figure>
-              <ul className={styles.points} aria-label={`Aspectos clave de ${service.title}`}>
-                {service.highlights.map((point) => (
-                  <li key={point.text}>
-                    <span className={styles.pointIcon} aria-hidden>
-                      {point.icon}
-                    </span>
-                    <span className={styles.pointText}>{point.text}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </article>
-        ))}
+            </article>
+          ))}
+        </div>
       </div>
     </section>
   )
