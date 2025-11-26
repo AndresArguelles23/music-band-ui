@@ -43,6 +43,24 @@ blockquote {
   line-height: 1.6;
 }
 
+.attribution {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: var(--space-sm);
+}
+
+.avatar {
+  width: 56px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  object-fit: cover;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  transition: transform 200ms ease, box-shadow 200ms ease,
+    border-color 200ms ease;
+}
+
 .card:hover,
 .card:focus-within {
   transform: translateY(-4px) scale(1.01);
@@ -50,6 +68,14 @@ blockquote {
   border-color: rgba(196, 181, 253, 0.4);
   outline: 1px solid rgba(196, 181, 253, 0.35);
   outline-offset: 1px;
+}
+
+.card:hover .avatar,
+.card:focus-within .avatar {
+  border-color: rgba(196, 181, 253, 0.45);
+  box-shadow: 0 10px 34px rgba(0, 0, 0, 0.25),
+    0 0 0 4px rgba(196, 181, 253, 0.15);
+  transform: translateY(-2px);
 }
 
 .card:active {
@@ -85,5 +111,17 @@ blockquote {
   .card:focus-within,
   .card:active {
     transform: none;
+  }
+
+  .avatar {
+    transition: border-color 200ms ease;
+    transform: none;
+  }
+
+  .card:hover .avatar,
+  .card:focus-within .avatar,
+  .card:active .avatar {
+    transform: none;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
   }
 }
