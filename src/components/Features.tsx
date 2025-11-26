@@ -75,7 +75,7 @@ const Features = () => {
               <span className={styles.badge}>{String(index + 1).padStart(2, '0')}</span>
               <div className={styles.titleBlock}>
                 <div className={styles.cardTitle}>
-                  <img src={featureIcon} alt="Icono destacado" aria-hidden />
+              
                   <h3>{service.title}</h3>
                 </div>
                 <p className={styles.description}>{service.description}</p>
