@@ -25,7 +25,7 @@ const services = [
 
 const Features = () => {
   return (
-    <section className={styles.section} id="features">
+    <section className={`${styles.section} container`} id="features">
       <div className={styles.header}>
         <p className={styles.kicker}>Servicios clave</p>
         <h2>Sonido, estrategia y logística sin perder el estilo.</h2>

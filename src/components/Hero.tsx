@@ -3,7 +3,7 @@ import styles from './Hero.module.css'
 
 const Hero = () => {
   return (
-    <section className={styles.hero} id="artists">
+    <section className={`${styles.hero} container`} id="artists">
       <div className={styles.copy}>
         <p className={styles.tagline}>Producción y management musical</p>
         <h1>Haz que tu banda se escuche en todas partes</h1>

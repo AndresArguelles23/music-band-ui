@@ -2,7 +2,7 @@ import styles from './Footer.module.css'
 
 const Footer = () => {
   return (
-    <footer className={styles.footer} id="contact">
+    <footer className={`${styles.footer} container`} id="contact">
       <div>
         <p className={styles.kicker}>Contacto</p>
         <h3>Hablemos de tu próximo show.</h3>
