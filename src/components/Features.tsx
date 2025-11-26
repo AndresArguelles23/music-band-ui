@@ -1,7 +1,4 @@
-import audiovisualIllustration from '../assets/audiovisual-illustration.svg'
-import eventIllustration from '../assets/event-illustration.svg'
 import featureIcon from '../assets/spark-icon.svg'
-import perreoIllustration from '../assets/perreo-illustration.svg'
 import styles from './Features.module.css'
 
 const services = [
@@ -14,8 +11,9 @@ const services = [
       'Dinámicas participativas, giveaways y cápsulas cortas para redes sociales',
       'Producción ágil para venues, festivales o activaciones con marcas',
     ],
-    image: perreoIllustration,
-    alt: 'DJ con luces de neón y público en fiesta urbana',
+    image:
+      'https://images.unsplash.com/photo-1501612780327-45045538702b?auto=format&fit=crop&w=1200&q=80',
+    alt: 'DJ animando a una multitud en un club con luces rosas',
   },
   {
     title: 'Producción de Eventos',
@@ -26,8 +24,9 @@ const services = [
       'Coordinación con tour managers, hospitality, acreditaciones y seguridad',
       'Integración con ticketing, experiencias VIP y métricas post-evento',
     ],
-    image: eventIllustration,
-    alt: 'Escenario con pantallas y cabinas de iluminación encendidas',
+    image:
+      'https://images.unsplash.com/photo-1489515217757-5fd1be406fef?auto=format&fit=crop&w=1200&q=80',
+    alt: 'Escenario iluminado con cabinas de producción durante un show',
   },
   {
     title: 'Producción Audio Visual',
@@ -38,8 +37,9 @@ const services = [
       'Guion, dirección y edición con entregables en múltiples formatos y ratios',
       'Entrega rápida de highlights para social media y campañas posteriores',
     ],
-    image: audiovisualIllustration,
-    alt: 'Cámaras grabando un show con interfaz de video resaltada',
+    image:
+      'https://images.unsplash.com/photo-1507878866276-a947ef722fee?auto=format&fit=crop&w=1200&q=80',
+    alt: 'Camarógrafo grabando un concierto con luces moradas',
   },
 ]
 
