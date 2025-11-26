@@ -5,14 +5,15 @@ const services = [
   {
     title: 'La Hora Del Perreo',
     description:
-      'Nuestro show insignia lleva la fiesta a otro nivel: sets de reggaetón curados, interacción constante con el público y un equipo que sabe cómo leer cada momento.',
+      'Show de música urbana con hits actuales y clásicos, además de animaciones que suben el ambiente por una hora inolvidable.',
     includes:
-      'Incluye: host + DJ, dinámicas participativas, cápsulas listas para redes.',
-    idealFor: 'Ideal para: clubes, festivales boutique y activaciones de marca nocturnas.',
+      'Incluye: equipo de 8 a 10 personas, opción en vivo o streaming y show con o sin bailarinas.',
+    idealFor:
+      'Ideal para: eventos sociales y empresariales, discotecas, bares y activaciones que buscan una rumba garantizada.',
     highlights: [
-      { icon: '🎛️', text: 'Hosts y DJ preparados para animar, entrevistar y mantener la energía arriba' },
-      { icon: '🎁', text: 'Dinámicas participativas, giveaways y cápsulas cortas para redes sociales' },
-      { icon: '🚚', text: 'Producción ágil para venues, festivales o activaciones con marcas' },
+      { icon: '🎤', text: 'Presentación de alta calidad en REGGAETON, DANCE HALL, CHAMPETA URBANA, LATIN TRAP y AFROBEAT' },
+      { icon: '💃', text: 'Formato flexible: con o sin bailarinas según las exigencias del cliente' },
+      { icon: '🕺', text: 'Animaciones y dinámica en escena para que cada momento mantenga la energía arriba' },
     ],
     image: '/images/service-perreo.avif',
     alt: 'DJ animando a una multitud en un club con luces rosas',
@@ -20,14 +21,15 @@ const services = [
   {
     title: 'Producción de Eventos',
     description:
-      'Desde la idea creativa hasta el último encore, diseñamos experiencias en vivo completas para artistas, bandas y marcas que buscan impacto real.',
+      'Contamos con los equipos necesarios para hacer realidad el evento de tus sueños: sonido, luces, pantallas y efectos listos para tu fiesta.',
     includes:
-      'Incluye: stage design, backline, hospitality y coordinación integral de crew.',
-    idealFor: 'Ideal para: giras, lanzamientos con fans y festivales con múltiples escenarios.',
+      'Incluye: amplificación, luces de escenario y ambientación, pista de baile, pantallas LED, tarima y estructuras.',
+    idealFor:
+      'Ideal para: eventos sociales de todo tipo, aniversarios empresariales, lanzamientos y celebraciones en establecimientos.',
     highlights: [
-      { icon: '🎚️', text: 'Riders técnicos, stage design y logística de backline adaptados a cada venue' },
-      { icon: '🛡️', text: 'Coordinación con tour managers, hospitality, acreditaciones y seguridad' },
-      { icon: '📈', text: 'Integración con ticketing, experiencias VIP y métricas post-evento' },
+      { icon: '💡', text: 'Iluminación de ambientación y profesional para tarimas y espectáculos' },
+      { icon: '🎆', text: 'Efectos especiales y escenografía: Ventury, Crio Jet, humo y burbujas' },
+      { icon: '🔊', text: 'Sonido con DJ y amplificación, más red de grupos musicales aliados' },
     ],
     image: '/images/service-eventos.avif',
     alt: 'Escenario iluminado con cabinas de producción durante un show',
@@ -35,13 +37,13 @@ const services = [
   {
     title: 'Producción Audio Visual',
     description:
-      'Generamos contenido que cuenta la historia detrás del show: live sessions, aftermovies y piezas cortas optimizadas para plataformas digitales.',
-    includes: 'Incluye: crew de filmación, dirección creativa y edición multi-formato.',
-    idealFor: 'Ideal para: campañas digitales, live sessions y recaps inmediatos post-show.',
+      'Equipo humano y tecnológico listo para producciones musicales y de video de cualquier tipo para que hagas realidad tus sueños.',
+    includes: 'Incluye: crew de filmación, dirección creativa y edición en múltiples formatos.',
+    idealFor: 'Ideal para: producciones musicales, videos promocionales y contenido para plataformas digitales.',
     highlights: [
-      { icon: '🎥', text: 'Equipo de filmación en vivo y crew de fotografía especializado en conciertos' },
-      { icon: '✂️', text: 'Guion, dirección y edición con entregables en múltiples formatos y ratios' },
-      { icon: '⚡', text: 'Entrega rápida de highlights para social media y campañas posteriores' },
+      { icon: '🎥', text: 'Producción audiovisual integral con grabación, dirección y crew especializado' },
+      { icon: '✂️', text: 'Edición multi-formato para redes, campañas y material promocional' },
+      { icon: '🚀', text: 'Entregables listos para impulsar la difusión de tu proyecto' },
     ],
     image: '/images/service-audiovisual.avif',
     alt: 'Camarógrafo grabando un concierto con luces moradas',
