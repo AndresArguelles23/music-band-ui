@@ -1,23 +1,26 @@
 .section {
   padding: calc(var(--section-spacing) * 1.1) 0;
+  letter-spacing: var(--text-spacing-relaxed);
 }
 
 .inner {
   max-width: 1120px;
   color: var(--color-text);
   display: grid;
-  gap: clamp(var(--space-xl), 3.5vw, calc(var(--section-gap) * 1.2));
+  gap: clamp(var(--space-xl), 3.5vw, calc(var(--section-gap) * 1.35));
   letter-spacing: var(--text-spacing-relaxed);
+  text-align: left;
 }
 
 .header {
   display: grid;
-  gap: var(--space-sm);
+  gap: calc(var(--space-sm) * 1.05);
   align-content: start;
-  padding-left: calc(var(--space-sm) * 1.6);
-  border-left: 3px solid rgba(99, 102, 241, 0.65);
-  max-width: 640px;
+  padding-left: calc(var(--space-sm) * 1.9);
+  border-left: 4px solid rgba(99, 102, 241, 0.8);
+  max-width: 680px;
   text-wrap: balance;
+  line-height: 1.25;
 }
 
 .overline {
@@ -28,22 +31,25 @@
   border-radius: 999px;
   background: var(--gradient-pill);
   color: var(--color-accent-soft);
-  font-weight: 700;
+  font-weight: 800;
   letter-spacing: 0.06em;
   text-transform: uppercase;
   font-size: 0.85rem;
   width: fit-content;
+  font-family: var(--font-accent);
+  box-shadow: 0 10px 30px rgba(99, 102, 241, 0.22);
 }
 
 .inner h2 {
   font-size: clamp(2rem, 3vw + 1.25rem, 2.75rem);
   letter-spacing: -0.03em;
+  line-height: 1.05;
 }
 
 .subtitle {
   color: var(--color-text-muted);
-  font-weight: 600;
-  font-size: 1.125rem;
+  font-weight: 700;
+  font-size: 1.15rem;
   margin-top: var(--space-xxs);
   letter-spacing: 0.08em;
 }
@@ -51,9 +57,9 @@
 .grid {
   display: grid;
   grid-template-columns: 1.1fr 0.9fr;
-  gap: clamp(var(--space-xl), 4vw, calc(var(--section-gap) * 1.15));
+  gap: clamp(var(--space-xl), 4vw, calc(var(--section-gap) * 1.35));
   align-items: center;
-  padding: calc(var(--space-md) * 1.2) clamp(var(--space-sm), 3vw, var(--space-lg)) 0;
+  padding: calc(var(--space-md) * 1.4) clamp(var(--space-sm), 3vw, var(--space-lg)) 0;
 }
 
 .copy {
@@ -61,7 +67,8 @@
   gap: calc(var(--content-gap) * 1.15);
   color: var(--color-text-muted);
   max-width: 680px;
-  line-height: 1.9;
+  line-height: 1.95;
+  font-family: var(--font-body);
 }
 
 .copy p + p {
