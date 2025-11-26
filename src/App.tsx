@@ -7,6 +7,7 @@ import Hero from './components/Hero'
 import Navigation from './components/Navigation'
 import Shows from './components/Shows'
 import Discography from './components/Discography'
+import SectionDivider from './components/SectionDivider'
 
 function App() {
   return (
@@ -14,10 +15,15 @@ function App() {
       <Navigation />
       <main>
         <Hero />
+        <SectionDivider />
         <About />
+        <SectionDivider />
         <Features />
+        <SectionDivider />
         <Shows />
+        <SectionDivider />
         <FAQ />
+        <SectionDivider />
         <Discography />
       </main>
       <Footer />
