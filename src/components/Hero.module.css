@@ -9,11 +9,11 @@
 .copy h1 {
   font-size: clamp(2.5rem, 4vw + 1rem, 3.6rem);
   margin: 0.5rem 0 0.75rem;
-  color: #e2e8f0;
+  color: var(--color-text);
 }
 
 .copy {
-  color: #cbd5e1;
+  color: var(--color-text-muted);
 }
 
 .subtitle {
@@ -62,7 +62,7 @@
 
 .secondary {
   border: 1px solid rgba(148, 163, 184, 0.3);
-  color: #e2e8f0;
+  color: var(--color-text);
   background: rgba(255, 255, 255, 0.04);
 }
 
