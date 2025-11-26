@@ -91,11 +91,30 @@
   z-index: 1;
 }
 
+.mediaAsset {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 14px;
+  z-index: 0;
+  background: #0b1021;
+}
+
+.mediaTint {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(145deg, rgba(11, 16, 33, 0.7), rgba(11, 16, 33, 0.25));
+  z-index: 2;
+  pointer-events: none;
+}
+
 .badge {
   position: absolute;
   top: var(--space-sm);
   right: var(--space-sm);
-  z-index: 2;
+  z-index: 3;
   background: rgba(11, 16, 33, 0.78);
   color: #e2e8f0;
   border: 1px solid rgba(255, 255, 255, 0.1);
@@ -107,7 +126,7 @@
 .mockContent {
   position: absolute;
   inset: 0;
-  z-index: 2;
+  z-index: 3;
   display: grid;
   align-content: center;
   padding: var(--space-lg);

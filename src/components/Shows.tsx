@@ -4,10 +4,13 @@ type Showcase = {
   title: string
   location: string
   highlight: string
-  format: 'Video mockup' | 'Foto mockup'
+  format: 'Video' | 'Foto'
   detail: string
   tags: string[]
   accent: string
+  mediaType: 'video' | 'image'
+  src: string
+  poster?: string
 }
 
 const showcases: Showcase[] = [
@@ -16,40 +19,51 @@ const showcases: Showcase[] = [
     location: 'Teatro Municipal, Medellín',
     highlight:
       'Cámaras en steady + drone interior para capturar la entrada, crowd surfing y los momentos de llamadas con el público.',
-    format: 'Video mockup',
+    format: 'Video',
     detail: '00:45 • Corte vertical y horizontal',
     tags: ['Aftermovie', 'Iluminación sincronizada', 'Entrega express'],
     accent: '#22d3ee',
+    mediaType: 'video',
+    src: 'https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4',
+    poster: 'https://images.unsplash.com/photo-1446057032654-9d8885db76c6?auto=format&fit=crop&w=1200&q=80',
   },
   {
     title: 'Live Session - Versión acústica',
     location: 'Warehouse Studio, Bogotá',
     highlight:
       'Set íntimo con audio multitrack, close ups de cuerdas y paneos suaves sobre el público para un release minimalista.',
-    format: 'Video mockup',
+    format: 'Video',
     detail: '01:10 • Formato live session',
     tags: ['Audio HQ', 'Multi-cámara', 'Color grading cálido'],
     accent: '#a855f7',
+    mediaType: 'video',
+    src: 'https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4',
+    poster: 'https://images.unsplash.com/photo-1489515217757-5fd1be406fef?auto=format&fit=crop&w=1200&q=80',
   },
   {
     title: 'Galería - Festival Bruma',
     location: 'Bosque de Chapultepec, CDMX',
     highlight:
       'Secuencia de fotos con crowd shots, backstage, detalles de merch y pirotecnia para prensa y marcas.',
-    format: 'Foto mockup',
+    format: 'Foto',
     detail: '12 capturas curadas',
     tags: ['Backstage', 'Press kit', 'Formato carré'],
     accent: '#f59e0b',
+    mediaType: 'image',
+    src: 'https://images.unsplash.com/photo-1507878866276-a947ef722fee?auto=format&fit=crop&w=1200&q=80',
   },
   {
     title: 'Recap - Showcase íntimo',
     location: 'Club Subsuelo, Barcelona',
     highlight:
       'Clip corto pensado para stories: entrada del artista, drop principal, interacción con fans y cierre con CTA.',
-    format: 'Video mockup',
+    format: 'Video',
     detail: '00:30 • Story/Reel',
     tags: ['Vertical', 'CTA integrado', 'Entrega overnight'],
     accent: '#22c55e',
+    mediaType: 'video',
+    src: 'https://samplelib.com/lib/preview/mp4/sample-5s.mp4',
+    poster: 'https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=1200&q=80',
   },
 ]
 
@@ -70,6 +84,21 @@ const Shows = () => {
         {showcases.map((item) => (
           <article key={item.title} className={styles.card}>
             <div className={styles.media} style={{ ['--accent' as string]: item.accent }}>
+              {item.mediaType === 'video' ? (
+                <video
+                  className={styles.mediaAsset}
+                  src={item.src}
+                  poster={item.poster}
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  controls
+                />
+              ) : (
+                <img className={styles.mediaAsset} src={item.src} alt={item.title} loading="lazy" />
+              )}
+              <div className={styles.mediaTint} aria-hidden="true" />
               <div className={styles.badge}>{item.format}</div>
               <div className={styles.mockContent}>
                 <p className={styles.mockTitle}>{item.title}</p>
@@ -82,7 +111,7 @@ const Shows = () => {
               <div className={styles.meta}>
                 <span>{item.location}</span>
                 <span className={styles.accentDot} aria-hidden="true" />
-                <span>{item.format.replace('mockup', '')}</span>
+                <span>{item.format}</span>
               </div>
               <p className={styles.highlight}>{item.highlight}</p>
               <div className={styles.tags} aria-label={`Etiquetas para ${item.title}`}>
