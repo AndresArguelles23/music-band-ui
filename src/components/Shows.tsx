@@ -60,27 +60,68 @@ const videos: VideoShowcase[] = [
 ]
 
 const Shows = () => {
-  const [activeIndex, setActiveIndex] = useState(0)
+  const [activeIndex, setActiveIndex] = useState(videos.length)
   const [isPaused, setIsPaused] = useState(false)
+  const [isInstant, setIsInstant] = useState(false)
   const wheelLockRef = useRef(false)
+  const trackRef = useRef<HTMLDivElement>(null)
+  const activeIndexRef = useRef(activeIndex)
+
+  const loopedVideos = [...videos, ...videos, ...videos]
+
+  useEffect(() => {
+    activeIndexRef.current = activeIndex
+  }, [activeIndex])
 
   const goTo = (index: number) => {
-    setActiveIndex((index + videos.length) % videos.length)
+    const candidates = [index, index + videos.length, index + videos.length * 2]
+    const target = candidates.reduce((closest, current) =>
+      Math.abs(current - activeIndex) < Math.abs(closest - activeIndex) ? current : closest,
+    )
+
+    setActiveIndex(target)
   }
 
   const handleDirection = (direction: 'prev' | 'next') => {
-    goTo(activeIndex + (direction === 'next' ? 1 : -1))
+    setActiveIndex((prev) => prev + (direction === 'next' ? 1 : -1))
   }
 
   useEffect(() => {
     if (isPaused) return
 
     const timer = window.setInterval(() => {
-      setActiveIndex((prev) => (prev + 1) % videos.length)
+      setActiveIndex((prev) => prev + 1)
     }, 5200)
 
     return () => window.clearInterval(timer)
   }, [isPaused])
+
+  useEffect(() => {
+    const track = trackRef.current
+    if (!track) return
+
+    const handleTransitionEnd = () => {
+      const currentIndex = activeIndexRef.current
+      if (currentIndex >= videos.length * 2 || currentIndex < videos.length) {
+        const normalized = ((currentIndex % videos.length) + videos.length) % videos.length
+        setIsInstant(true)
+        setActiveIndex(videos.length + normalized)
+      }
+    }
+
+    track.addEventListener('transitionend', handleTransitionEnd)
+    return () => track.removeEventListener('transitionend', handleTransitionEnd)
+  }, [])
+
+  useEffect(() => {
+    if (!isInstant) return
+
+    const id = window.requestAnimationFrame(() => {
+      setIsInstant(false)
+    })
+
+    return () => window.cancelAnimationFrame(id)
+  }, [isInstant])
 
   const handleWheel = (event: WheelEvent<HTMLDivElement>) => {
     if (wheelLockRef.current) return
@@ -117,6 +158,8 @@ const Shows = () => {
     card.style.setProperty('--tilt-y', '0deg')
   }
 
+  const visibleIndex = ((activeIndex % videos.length) + videos.length) % videos.length
+
   return (
     <section className={`${styles.section} container`} id="videos">
       <header className={styles.header}>
@@ -147,8 +190,12 @@ const Shows = () => {
           onMouseLeave={() => setIsPaused(false)}
           onWheel={handleWheel}
         >
-          <div className={styles.track} style={{ ['--index' as string]: activeIndex }}>
-            {videos.map((video, idx) => {
+          <div
+            ref={trackRef}
+            className={styles.track}
+            style={{ ['--index' as string]: activeIndex, transition: isInstant ? 'none' : undefined }}
+          >
+            {loopedVideos.map((video, idx) => {
               const isActive = idx === activeIndex
 
               return (
@@ -185,9 +232,9 @@ const Shows = () => {
             {videos.map((video, idx) => (
               <button
                 key={video.title}
-                className={`${styles.dot} ${idx === activeIndex ? styles.dotActive : ''}`}
+                className={`${styles.dot} ${idx === visibleIndex ? styles.dotActive : ''}`}
                 aria-label={`Ir al video ${video.title}`}
-                aria-selected={idx === activeIndex}
+                aria-selected={idx === visibleIndex}
                 role="tab"
                 onClick={() => goTo(idx)}
               />
