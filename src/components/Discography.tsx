@@ -9,8 +9,6 @@ type Track = {
   duration: string
   cover: string
   spotifyUrl: string
-  highlight?: boolean
-  description?: string
   tag?: string
 }
 
@@ -22,9 +20,6 @@ const tracks: Track[] = [
     duration: '3:30',
     cover: 'https://upload.wikimedia.org/wikipedia/en/5/52/CancionAnimalSodaStereo.jpg',
     spotifyUrl: 'https://open.spotify.com/track/6R6ZAavr9ISYJkH4Na4wTI',
-    highlight: true,
-    description:
-      'El himno del rock latino que enciende cualquier set: guitarras filosas y un coro eterno listo para reproducir.',
     tag: 'Clásico',
   },
   {
@@ -62,8 +57,6 @@ const tracks: Track[] = [
 ]
 
 const Discography = () => {
-  const featuredTrack = tracks.find((track) => track.highlight) ?? tracks[0]
-
   return (
     <section className={`${styles.section} container`} id="discography">
       <div className={styles.header}>
@@ -76,32 +69,6 @@ const Discography = () => {
       </div>
 
       <div className={styles.layout}>
-        <article className={styles.featured}>
-          <div className={styles.featuredBadge}>Nuevo lanzamiento</div>
-          <div className={styles.featuredArtwork}>
-            <img src={featuredTrack.cover} alt={`Portada de ${featuredTrack.album}`} loading="lazy" />
-          </div>
-          <div className={styles.featuredInfo}>
-            <p className={styles.featuredSubtitle}>{featuredTrack.album}</p>
-            <h3>{featuredTrack.title}</h3>
-            <p className={styles.featuredArtist}>{featuredTrack.artist}</p>
-            <p className={styles.featuredDescription}>{featuredTrack.description}</p>
-            <div className={styles.featuredActions}>
-              <a
-                className={styles.primaryButton}
-                href={featuredTrack.spotifyUrl}
-                target="_blank"
-                rel="noreferrer"
-              >
-                Reproducir en Spotify
-              </a>
-              <a className={styles.secondaryButton} href={playlistUrl} target="_blank" rel="noreferrer">
-                Abrir playlist completa
-              </a>
-            </div>
-          </div>
-        </article>
-
         <div className={styles.listCard}>
           <div className={styles.listHeader}>
             <div>
