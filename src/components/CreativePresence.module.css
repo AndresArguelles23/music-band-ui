@@ -1,0 +1,143 @@
+.section {
+  padding: var(--section-spacing) 0;
+}
+
+.inner {
+  display: grid;
+  gap: clamp(var(--space-lg), 3vw, var(--section-gap));
+  background: linear-gradient(145deg, rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.55));
+  border: 1px solid var(--color-border);
+  border-radius: 22px;
+  padding: clamp(1.75rem, 4vw, 3rem);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 22px 60px rgba(0, 0, 0, 0.35);
+}
+
+.inner::before,
+.inner::after {
+  content: '';
+  position: absolute;
+  inset: 8% auto auto -12%;
+  width: 36%;
+  aspect-ratio: 1/1;
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.18), transparent 58%);
+  filter: blur(60px);
+  z-index: 0;
+}
+
+.inner::after {
+  inset: auto -8% -6% auto;
+  background: radial-gradient(circle, rgba(34, 211, 238, 0.18), transparent 60%);
+}
+
+.header {
+  display: grid;
+  gap: var(--space-sm);
+  align-content: start;
+  max-width: 720px;
+  position: relative;
+  z-index: 1;
+  text-align: left;
+}
+
+.kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  padding: 0.35rem 0.85rem;
+  border-radius: 999px;
+  background: var(--gradient-pill);
+  color: var(--color-accent-soft);
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  width: fit-content;
+  font-family: var(--font-accent);
+  box-shadow: 0 10px 30px rgba(99, 102, 241, 0.24);
+}
+
+.header h2 {
+  font-size: clamp(2rem, 3vw + 1rem, 2.65rem);
+}
+
+.lead {
+  color: var(--color-text-muted);
+  font-weight: 600;
+  font-size: 1.08rem;
+  line-height: 1.8;
+}
+
+.content {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: clamp(var(--space-xl), 4vw, calc(var(--section-gap) * 1.2));
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+.copy {
+  display: grid;
+  gap: var(--content-gap);
+  color: var(--color-text-muted);
+  line-height: 1.95;
+}
+
+.badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+}
+
+.badge {
+  padding: 0.55rem 0.9rem;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: linear-gradient(145deg, rgba(99, 102, 241, 0.14), rgba(34, 211, 238, 0.14));
+  color: #e0e7ff;
+  font-weight: 700;
+  font-size: 0.95rem;
+  letter-spacing: 0.05em;
+}
+
+.media {
+  max-width: 520px;
+  justify-self: end;
+}
+
+.media img {
+  width: 100%;
+  display: block;
+  border-radius: 16px;
+}
+
+@media (max-width: 960px) {
+  .content {
+    grid-template-columns: 1fr;
+  }
+
+  .media {
+    justify-self: center;
+    width: min(540px, 100%);
+  }
+}
+
+@media (max-width: 720px) {
+  .inner {
+    padding: clamp(1.25rem, 3vw, 1.75rem);
+  }
+
+  .header {
+    gap: var(--space-xs);
+  }
+
+  .badges {
+    gap: var(--space-xs);
+  }
+
+  .badge {
+    font-size: 0.9rem;
+  }
+}
