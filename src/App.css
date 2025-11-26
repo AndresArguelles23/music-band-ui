@@ -6,10 +6,14 @@
     var(--color-surface);
   color: var(--color-text);
   padding-bottom: var(--space-xl);
+  letter-spacing: var(--text-spacing-relaxed);
 }
 
 main {
   display: flex;
   flex-direction: column;
-  gap: calc(var(--section-gap) * 1.1);
+  gap: calc(var(--section-gap) * 1.4);
+  padding-block: clamp(1.25rem, 3vw, 2.75rem);
+  align-items: stretch;
+  line-height: 1.8;
 }

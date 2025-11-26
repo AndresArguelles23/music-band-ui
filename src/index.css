@@ -1,10 +1,14 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=Unbounded:wght@500;600;700&display=swap');
 
 :root {
-  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  line-height: 1.6;
-  font-weight: 400;
-  --color-surface: #0b1021;
+  --font-body: 'Manrope', 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-display: 'Unbounded', 'Space Grotesk', 'Inter', system-ui, -apple-system, BlinkMacSystemFont,
+    'Segoe UI', sans-serif;
+  --font-accent: 'Space Grotesk', 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-family: var(--font-body);
+  line-height: 1.7;
+  font-weight: 500;
+  --color-surface: #060914;
   --color-surface-strong: #0f172a;
   --color-text: #e2e8f0;
   --color-text-muted: #cbd5e1;
@@ -20,7 +24,9 @@
   --section-gap: clamp(1.75rem, 3.5vw, 3rem);
   --content-gap: clamp(0.85rem, 1.8vw, 1.35rem);
   --container-max: 1280px;
-  --container-padding: clamp(1.25rem, 4vw, 3rem);
+  --container-padding: clamp(1.5rem, 4vw, 3.25rem);
+  --text-spacing-tight: -0.05em;
+  --text-spacing-relaxed: 0.03em;
   color: var(--color-text);
   background-color: var(--color-surface);
   text-rendering: optimizeLegibility;
@@ -49,7 +55,11 @@ a:hover {
 body {
   margin: 0;
   min-height: 100vh;
-  background-color: var(--color-surface);
+  background:
+    radial-gradient(circle at 8% 12%, rgba(99, 102, 241, 0.14), transparent 26%),
+    radial-gradient(circle at 88% 16%, rgba(34, 211, 238, 0.18), transparent 24%),
+    radial-gradient(circle at 46% 82%, rgba(168, 85, 247, 0.14), transparent 26%),
+    linear-gradient(180deg, rgba(4, 6, 14, 0.98), rgba(10, 15, 26, 0.96));
 }
 
 h1,
@@ -57,11 +67,50 @@ h2,
 h3,
 h4 {
   margin: 0;
-  line-height: 1.2;
+  line-height: 1.05;
+  font-family: var(--font-display);
+  letter-spacing: var(--text-spacing-tight);
+  text-wrap: balance;
+  text-transform: none;
+  font-variation-settings: 'wdth' 108, 'wght' 640;
+  word-spacing: 0.02em;
 }
 
 p {
   margin: 0;
+  text-wrap: pretty;
+  letter-spacing: var(--text-spacing-relaxed);
+  font-size: 1.08rem;
+  line-height: 1.85;
+  font-family: var(--font-body);
+}
+
+small,
+label,
+span,
+li {
+  font-family: var(--font-body);
+  letter-spacing: 0.03em;
+}
+
+label {
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--color-text-muted);
+  letter-spacing: 0.12em;
+}
+
+ul,
+ol {
+  padding-left: 1.1rem;
+  margin: var(--space-sm) 0;
+  line-height: 1.75;
+}
+
+::selection {
+  background: rgba(99, 102, 241, 0.35);
+  color: #f8fafc;
 }
 
 #root {
@@ -72,6 +121,12 @@ p {
   margin: 0 auto;
   max-width: var(--container-max);
   padding-inline: var(--container-padding);
+  display: grid;
+  gap: var(--section-gap);
+}
+
+section {
+  scroll-margin-top: 90px;
 }
 
 @media (max-width: 640px) {
