@@ -1,6 +1,12 @@
+import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { useEffect, useRef, useState, type MouseEvent, type WheelEvent } from 'react'
 
+import { shouldReduceMotion } from '../utils/motion'
+
 import styles from './Shows.module.css'
+
+gsap.registerPlugin(ScrollTrigger)
 
 type VideoShowcase = {
   title: string
@@ -56,6 +62,7 @@ const Shows = () => {
   const [isPaused, setIsPaused] = useState(false)
   const [isInstant, setIsInstant] = useState(false)
   const wheelLockRef = useRef(false)
+  const sectionRef = useRef<HTMLElement>(null)
   const trackRef = useRef<HTMLDivElement>(null)
   const activeIndexRef = useRef(activeIndex)
 
@@ -155,8 +162,31 @@ const Shows = () => {
   const isCardVisible = (idx: number) =>
     ((idx % videos.length) + videos.length) % videos.length === visibleIndex
 
+  useEffect(() => {
+    const section = sectionRef.current
+    if (!section) return
+
+    const context = gsap.context(() => {
+      if (shouldReduceMotion()) return
+
+      gsap.from(section, {
+        opacity: 0,
+        y: 24,
+        duration: 0.8,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: section,
+          start: 'top 75%',
+          once: true,
+        },
+      })
+    }, section)
+
+    return () => context.revert()
+  }, [])
+
   return (
-    <section className={`${styles.section} container`} id="videos">
+    <section ref={sectionRef} className={`${styles.section} container`} id="videos">
       <header className={styles.header}>
         <p className={styles.kicker}>Videos</p>
         <h2>Revive los momentos del grupo en todos sus formatos.</h2>

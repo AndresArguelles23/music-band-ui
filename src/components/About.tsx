@@ -1,10 +1,43 @@
+import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { useEffect, useRef } from 'react'
+
+import { shouldReduceMotion } from '../utils/motion'
+
 import styles from './About.module.css'
+
+gsap.registerPlugin(ScrollTrigger)
 
 const ensembleImage = '/images/about-ensemble.jpg.avif'
 
 const About = () => {
+  const sectionRef = useRef<HTMLElement>(null)
+
+  useEffect(() => {
+    const section = sectionRef.current
+    if (!section) return
+
+    const context = gsap.context(() => {
+      if (shouldReduceMotion()) return
+
+      gsap.from(section, {
+        opacity: 0,
+        y: 24,
+        duration: 0.8,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: section,
+          start: 'top 75%',
+          once: true,
+        },
+      })
+    }, section)
+
+    return () => context.revert()
+  }, [])
+
   return (
-    <section className={`${styles.section} container`} id="about">
+    <section ref={sectionRef} className={`${styles.section} container`} id="about">
       <div className={styles.inner}>
         <header className={styles.header}>
           <p className={styles.overline}>Sobre el colectivo</p>

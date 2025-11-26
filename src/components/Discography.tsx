@@ -1,12 +1,45 @@
+import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { useEffect, useRef } from 'react'
+
+import { shouldReduceMotion } from '../utils/motion'
+
 import styles from './Discography.module.css'
+
+gsap.registerPlugin(ScrollTrigger)
 
 const albumId = '7nDRET5n3NjBfIeyTo58dH'
 const albumUrl = `https://open.spotify.com/album/${albumId}`
 const albumEmbedUrl = `https://open.spotify.com/embed/album/${albumId}?utm_source=generator&theme=0`
 
 const Discography = () => {
+  const sectionRef = useRef<HTMLElement>(null)
+
+  useEffect(() => {
+    const section = sectionRef.current
+    if (!section) return
+
+    const context = gsap.context(() => {
+      if (shouldReduceMotion()) return
+
+      gsap.from(section, {
+        opacity: 0,
+        y: 24,
+        duration: 0.8,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: section,
+          start: 'top 75%',
+          once: true,
+        },
+      })
+    }, section)
+
+    return () => context.revert()
+  }, [])
+
   return (
-    <section className={`${styles.section} container`} id="discography">
+    <section ref={sectionRef} className={`${styles.section} container`} id="discography">
       <div className={styles.header}>
         <p className={styles.kicker}>Discografía</p>
         <h2>Álbum listo para streaming</h2>
