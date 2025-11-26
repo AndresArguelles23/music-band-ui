@@ -2,9 +2,6 @@
   padding: var(--section-spacing) 0;
   display: grid;
   gap: var(--section-gap);
-  position: relative;
-  isolation: isolate;
-  overflow: hidden;
 }
 
 .header {
@@ -28,24 +25,6 @@
 
 .lead {
   color: #cbd5e1;
-}
-
-.section::after {
-  content: '';
-  position: absolute;
-  inset: -8% -6%;
-  background: radial-gradient(circle at 18% 28%, rgba(103, 232, 249, 0.18), transparent 36%),
-    linear-gradient(145deg, rgba(34, 211, 238, 0.1), rgba(168, 85, 247, 0.1));
-  opacity: 0;
-  clip-path: circle(30% at 20% 26%);
-  transition: opacity 640ms ease, clip-path 940ms ease;
-  pointer-events: none;
-  z-index: -1;
-}
-
-.section.is-visible::after {
-  opacity: 1;
-  clip-path: circle(120% at 50% 50%);
 }
 
 .carouselWrapper {
