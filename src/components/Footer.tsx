@@ -11,38 +11,38 @@ type Contact = {
 const contacts: Contact[] = [
   {
     area: 'Booking Colombia',
-    name: 'Juan Camilo Fajardo',
+    name: 'Elkin Orozco Hoyos',
     role: 'Agente y estrategia de gira',
-    email: 'juan@pulsewave.studio',
-    phone: '+57 320 826 1659',
+    email: 'kyllarecords@hotmail.com',
+    phone: '+57 3017387044',
   },
   {
     area: 'Booking Países Bajos',
-    name: 'Mariana Gómez',
+    name: 'Blake Velasco',
     role: 'Tour manager EU',
-    email: 'mariana@pulsewave.studio',
-    phone: '+31 6 87 45 12 30',
+    email: 'kyllarecords@hotmail.com',
+    phone: '+31 614374494',
   },
   {
     area: 'Road Management',
     name: 'Laura Pineda',
     role: 'Coordinación de ruta y hospitality',
-    email: 'laura@pulsewave.studio',
+    email: 'kyllarecords@hotmail.com',
     phone: '+57 311 506 2400',
   },
   {
     area: 'Press',
-    name: 'Santiago Rivas',
+    name: 'Mario Rubiano',
     role: 'PR & Media Relations',
-    email: 'press@pulsewave.studio',
-    phone: '+57 300 928 7745',
+    email: 'kyllarecords@hotmail.com',
+    phone: '+57 3016597715',
   },
   {
     area: 'Comercial',
-    name: 'Natalia Ortiz',
+    name: 'Karolyne Brigante',
     role: 'Alianzas y patrocinios',
-    email: 'natalia@pulsewave.studio',
-    phone: '+57 315 778 9921',
+    email: 'kyllarecords@hotmail.com',
+    phone: '+57 3011129247',
   },
 ]
 
@@ -69,7 +69,6 @@ const Footer = () => {
             <div className={styles.links}>
               {email && (
                 <a className={styles.contactLink} href={`mailto:${email}`}>
-                  <span aria-hidden="true">✉️</span>
                   <span className={styles.linkLabel}>{email}</span>
                 </a>
               )}
