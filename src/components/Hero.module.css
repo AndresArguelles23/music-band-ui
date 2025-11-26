@@ -2,10 +2,11 @@
   position: relative;
   isolation: isolate;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: clamp(var(--section-gap), 4vw, calc(var(--section-gap) * 1.35));
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: clamp(var(--space-lg), 4vw, calc(var(--section-gap) * 0.9));
+  row-gap: clamp(var(--space-xl), 6vw, calc(var(--section-gap) * 1.4));
   align-items: center;
-  padding: calc(var(--section-spacing) * 1.5) 0 calc(var(--section-spacing) * 1.1);
+  padding: clamp(3rem, 5vw, 4.25rem) 0 clamp(2.5rem, 3vw, 3.5rem);
   perspective: 1200px;
 }
 
@@ -17,6 +18,21 @@
     radial-gradient(circle at 82% 18%, rgba(34, 211, 238, 0.22), transparent 28%),
     radial-gradient(circle at 50% 82%, rgba(244, 114, 182, 0.18), transparent 38%);
   filter: blur(20px);
+  z-index: -1;
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  inset: 8% 4%;
+  background-image: linear-gradient(
+      rgba(255, 255, 255, 0.05) 1px,
+      transparent 1px
+    ),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 140px 140px, 120px 120px;
+  mask-image: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.65), transparent 65%);
+  opacity: 0.6;
   z-index: -1;
 }
 
@@ -40,6 +56,7 @@
   align-self: center;
   letter-spacing: var(--text-spacing-relaxed);
   justify-items: start;
+  grid-column: 1 / span 7;
 }
 
 .subtitle {
@@ -129,6 +146,7 @@
   place-items: center;
   padding: clamp(var(--space-sm), 2vw, var(--space-md));
   transform: rotateY(-4deg) rotateX(2deg);
+  grid-column: 8 / -1;
 }
 
 .visual img {
@@ -155,7 +173,7 @@
 
 @media (min-width: 641px) and (max-width: 1024px) {
   .hero {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(8, minmax(0, 1fr));
     gap: calc(var(--space-lg) + var(--space-sm));
     padding: calc(var(--section-spacing) * 1.1) 0 var(--section-spacing);
   }
@@ -166,16 +184,27 @@
 
   .visual {
     justify-items: center;
+    grid-column: 1 / -1;
   }
 
   .visual img {
     max-width: clamp(420px, 64vw, 560px);
   }
+
+  .copy {
+    grid-column: 1 / -1;
+  }
 }
 
 @media (max-width: 640px) {
   .hero {
+    grid-template-columns: 1fr;
     gap: var(--space-lg);
     padding: var(--section-spacing) 0 calc(var(--section-spacing) * 0.75);
+  }
+
+  .copy,
+  .visual {
+    grid-column: 1 / -1;
   }
 }
