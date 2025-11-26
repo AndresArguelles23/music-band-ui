@@ -61,40 +61,39 @@ const Features = () => {
           cada show sume a su historia.
         </p>
       </div>
-      <div className={styles.grid}>
+      <div className={styles.list}>
         {services.map((service, index) => (
           <article
             key={service.title}
-            className={styles.card}
-            style={{ '--delay': `${index * 120}ms` } as CSSProperties}
+            className={styles.service}
+            style={{ '--delay': `${index * 120}ms` } as CSSProperties }
           >
-            <figure className={styles.media}>
-              <img className="imageHighlight" src={service.image} alt={service.alt} loading="lazy" />
-            </figure>
-            <div className={styles.cardHeader}>
+            <div className={styles.serviceHeader}>
               <span className={styles.badge}>{String(index + 1).padStart(2, '0')}</span>
               <div className={styles.titleBlock}>
-                <div className={styles.cardTitle}>
-              
-                  <h3>{service.title}</h3>
-                </div>
+                <h3>{service.title}</h3>
                 <p className={styles.description}>{service.description}</p>
+                <div className={styles.metaRow}>
+                  <span className={styles.meta}>{service.includes}</span>
+                  <span className={styles.meta}>{service.idealFor}</span>
+                </div>
               </div>
             </div>
-            <div className={styles.metaRow}>
-              <span className={styles.meta}>{service.includes}</span>
-              <span className={styles.meta}>{service.idealFor}</span>
+            <div className={styles.contentRow}>
+              <figure className={styles.media}>
+                <img className="imageHighlight" src={service.image} alt={service.alt} loading="lazy" />
+              </figure>
+              <ul className={styles.points} aria-label={`Aspectos clave de ${service.title}`}>
+                {service.highlights.map((point) => (
+                  <li key={point.text}>
+                    <span className={styles.pointIcon} aria-hidden>
+                      {point.icon}
+                    </span>
+                    <span className={styles.pointText}>{point.text}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
-            <ul className={styles.points} aria-label={`Aspectos clave de ${service.title}`}>
-              {service.highlights.map((point) => (
-                <li key={point.text}>
-                  <span className={styles.pointIcon} aria-hidden>
-                    {point.icon}
-                  </span>
-                  <span className={styles.pointText}>{point.text}</span>
-                </li>
-              ))}
-            </ul>
           </article>
         ))}
       </div>
