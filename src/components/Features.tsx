@@ -1,26 +1,37 @@
 import featureIcon from '../assets/spark-icon.svg'
 import styles from './Features.module.css'
 
-const features = [
-  {
-    title: 'Producción integral',
-    description: 'Desde pre-producción hasta mezcla y master en estudios certificados.',
-  },
-  {
-    title: 'Estrategia digital',
-    description: 'Campañas multicanal, contenido creativo y analítica en tiempo real.',
-  },
-  {
-    title: 'Booking y prensa',
-    description: 'Negociamos fechas, activamos prensa local y gestionamos acreditaciones.',
-  },
-]
-
 const services = [
-  'Diseño de escenario y riders técnicos adaptados a cada venue',
-  'Equipos de tour management y stage management bilingües',
-  'Producción de contenido en vivo y cápsulas documentales',
-  'Integración con partners de ticketing y experiencias VIP',
+  {
+    title: 'La Hora Del Perreo',
+    description:
+      'Nuestro show insignia lleva la fiesta a otro nivel: sets de reggaetón curados, interacción constante con el público y un equipo que sabe cómo leer cada momento.',
+    highlights: [
+      'Hosts y DJ preparados para animar, entrevistar y mantener la energía arriba',
+      'Dinámicas participativas, giveaways y cápsulas cortas para redes sociales',
+      'Producción ágil para venues, festivales o activaciones con marcas',
+    ],
+  },
+  {
+    title: 'Producción de Eventos',
+    description:
+      'Desde la idea creativa hasta el último encore, diseñamos experiencias en vivo completas para artistas, bandas y marcas que buscan impacto real.',
+    highlights: [
+      'Riders técnicos, stage design y logística de backline adaptados a cada venue',
+      'Coordinación con tour managers, hospitality, acreditaciones y seguridad',
+      'Integración con ticketing, experiencias VIP y métricas post-evento',
+    ],
+  },
+  {
+    title: 'Producción Audio Visual',
+    description:
+      'Generamos contenido que cuenta la historia detrás del show: live sessions, aftermovies y piezas cortas optimizadas para plataformas digitales.',
+    highlights: [
+      'Equipo de filmación en vivo y crew de fotografía especializado en conciertos',
+      'Guion, dirección y edición con entregables en múltiples formatos y ratios',
+      'Entrega rápida de highlights para social media y campañas posteriores',
+    ],
+  },
 ]
 
 const Features = () => {
@@ -35,19 +46,23 @@ const Features = () => {
         </p>
       </div>
       <div className={styles.grid}>
-        {features.map((feature) => (
-          <article key={feature.title} className={styles.card}>
-            <img src={featureIcon} alt="Icono destacado" aria-hidden />
-            <h3>{feature.title}</h3>
-            <p>{feature.description}</p>
+        {services.map((service) => (
+          <article key={service.title} className={styles.card}>
+            <div className={styles.cardHeader}>
+              <img src={featureIcon} alt="Icono destacado" aria-hidden />
+              <div>
+                <h3>{service.title}</h3>
+                <p className={styles.description}>{service.description}</p>
+              </div>
+            </div>
+            <ul className={styles.points} aria-label={`Aspectos clave de ${service.title}`}>
+              {service.highlights.map((point) => (
+                <li key={point}>{point}</li>
+              ))}
+            </ul>
           </article>
         ))}
       </div>
-      <ul className={styles.list} aria-label="Lista de servicios detallados">
-        {services.map((service) => (
-          <li key={service}>{service}</li>
-        ))}
-      </ul>
     </section>
   )
 }
