@@ -153,43 +153,6 @@
   background: #0b1021;
 }
 
-.badge,
-.time {
-  position: absolute;
-  z-index: 1;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.3rem;
-  padding: 0.35rem 0.8rem;
-  border-radius: 999px;
-  background: rgba(11, 16, 33, 0.82);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  color: #e2e8f0;
-  font-weight: 700;
-  font-size: 0.9rem;
-}
-
-.badge {
-  top: var(--space-sm);
-  left: var(--space-sm);
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.22);
-}
-
-.badge::before {
-  content: '';
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: var(--accent, #22d3ee);
-  box-shadow: 0 0 0 6px rgba(255, 255, 255, 0.06);
-}
-
-.time {
-  bottom: var(--space-sm);
-  right: var(--space-sm);
-  background: rgba(15, 23, 42, 0.86);
-}
-
 .content {
   display: grid;
   gap: 0.4rem;

@@ -6,9 +6,6 @@ type VideoShowcase = {
   title: string
   description: string
   videoId: string
-  vibe: string
-  accent: string
-  length: string
 }
 
 const videos: VideoShowcase[] = [
@@ -17,45 +14,30 @@ const videos: VideoShowcase[] = [
     description:
       'Close ups de cuerdas, tomas laterales y planos cálidos que capturan el vibe íntimo del grupo en estudio.',
     videoId: 'ktvTqknDobU',
-    vibe: 'Live Session',
-    accent: '#a855f7',
-    length: '4:12',
   },
   {
     title: 'Aftermovie - Festival Bruma',
     description:
       'Compilado de tomas aéreas y crowd shots con drops sincronizados a los beats para redes sociales.',
     videoId: 'kXYiU_JCYtU',
-    vibe: 'Aftermovie',
-    accent: '#22d3ee',
-    length: '3:05',
   },
   {
     title: 'Versión en vivo - Arena Central',
     description:
       'Edición multitrack con cortes rápidos y flashes de iluminación para mostrar la energía del show principal.',
     videoId: '1w7OgIMMRc4',
-    vibe: 'Live Show',
-    accent: '#f59e0b',
-    length: '5:48',
   },
   {
     title: 'Reel vertical - Backstage y prueba de sonido',
     description:
       'Formato 9:16 con detalles de instrumentos, risas de camerino y un teaser del arranque del concierto.',
     videoId: 'hTWKbfoikeg',
-    vibe: 'Reel',
-    accent: '#22c55e',
-    length: '0:45',
   },
   {
     title: 'Sesión íntima - Versión unplugged',
     description:
       'Micrófonos de ambiente y paneos suaves para acompañar armonías vocales en un set minimalista.',
     videoId: 'a7SouU3ECpU',
-    vibe: 'Acústico',
-    accent: '#ec4899',
-    length: '3:28',
   },
 ]
 
@@ -160,6 +142,9 @@ const Shows = () => {
 
   const visibleIndex = ((activeIndex % videos.length) + videos.length) % videos.length
 
+  const isCardVisible = (idx: number) =>
+    ((idx % videos.length) + videos.length) % videos.length === visibleIndex
+
   return (
     <section className={`${styles.section} container`} id="videos">
       <header className={styles.header}>
@@ -196,17 +181,17 @@ const Shows = () => {
             style={{ ['--index' as string]: activeIndex, transition: isInstant ? 'none' : undefined }}
           >
             {loopedVideos.map((video, idx) => {
-              const isActive = idx === activeIndex
+              const isVisible = isCardVisible(idx)
+              const isCurrent = idx === activeIndex
 
               return (
                 <article
-                  key={video.title}
-                  className={`${styles.card} ${isActive ? styles.active : ''}`}
-                  style={{ ['--accent' as string]: video.accent }}
+                  key={`${video.title}-${idx}`}
+                  className={`${styles.card} ${isVisible ? styles.active : ''}`}
                   onMouseMove={handleTilt}
                   onMouseLeave={resetTilt}
-                  tabIndex={isActive ? 0 : -1}
-                  aria-hidden={!isActive}
+                  tabIndex={isCurrent ? 0 : -1}
+                  aria-hidden={!isCurrent}
                 >
                   <div className={styles.frame}>
                     <iframe
@@ -216,8 +201,6 @@ const Shows = () => {
                       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                       allowFullScreen
                     />
-                    <div className={styles.badge}>{video.vibe}</div>
-                    <div className={styles.time}>{video.length}</div>
                   </div>
                   <div className={styles.content}>
                     <h3>{video.title}</h3>
