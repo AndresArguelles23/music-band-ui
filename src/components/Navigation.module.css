@@ -16,6 +16,49 @@
   position: relative;
 }
 
+.progressContainer {
+  position: absolute;
+  left: 8px;
+  right: 8px;
+  top: 6px;
+  height: 3px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.06);
+  overflow: hidden;
+  box-shadow: 0 10px 28px rgba(99, 102, 241, 0.3);
+  transform: translateZ(0);
+}
+
+.progressBar,
+.progressBarAccent {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: var(--progress, 0%);
+  transition: width 0.2s ease-out, opacity 0.4s ease;
+  transform-origin: left;
+}
+
+.progressBar {
+  background: linear-gradient(90deg, rgba(99, 102, 241, 0.75), rgba(34, 211, 238, 0.65));
+  opacity: 0.65;
+}
+
+.progressActive .progressBar {
+  opacity: 0.95;
+}
+
+.progressBarAccent {
+  background: linear-gradient(90deg, var(--color-accent), var(--color-primary));
+  opacity: 0;
+  box-shadow: 0 0 18px rgba(34, 211, 238, 0.28);
+}
+
+.progressBarAccentVisible {
+  opacity: 1;
+}
+
 .brand {
   font-size: 1.125rem;
   font-weight: 700;
