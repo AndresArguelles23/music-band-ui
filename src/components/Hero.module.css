@@ -295,11 +295,32 @@
   }
 }
 
+@media (max-width: 900px) {
+  .content {
+    justify-items: start;
+    text-align: left;
+  }
+
+  .showcase {
+    max-width: 640px;
+    justify-self: center;
+  }
+}
+
 @media (max-width: 640px) {
   .hero {
     grid-template-columns: 1fr;
     gap: var(--space-lg);
     padding: var(--section-spacing) 0 calc(var(--section-spacing) * 0.8);
+  }
+
+  .content {
+    text-align: center;
+    justify-items: center;
+  }
+
+  .featureList {
+    justify-items: center;
   }
 
   .cardFooter {
@@ -310,5 +331,17 @@
 
   .badgeStack {
     text-align: left;
+  }
+
+  .actions {
+    width: 100%;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .primary,
+  .secondary {
+    width: 100%;
+    justify-content: center;
   }
 }

@@ -18,3 +18,22 @@ main {
   align-items: stretch;
   line-height: 1.8;
 }
+
+@media (max-width: 768px) {
+  main {
+    gap: calc(var(--section-gap) * 1.1);
+    padding-top: clamp(4.5rem, 9vw, 5.75rem);
+    padding-inline: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .app {
+    padding-bottom: calc(var(--space-xl) * 1.2);
+  }
+
+  main {
+    gap: var(--section-gap);
+    padding-block: calc(var(--space-lg) * 1.2);
+  }
+}

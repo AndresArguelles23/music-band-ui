@@ -241,6 +241,19 @@
   }
 }
 
+@media (max-width: 480px) {
+  .metaGrid {
+    grid-template-columns: 1fr;
+    padding-left: 0;
+    border-left: none;
+    gap: var(--space-sm);
+  }
+
+  .service {
+    gap: var(--space-lg);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .service {
     animation: none;
