@@ -3,7 +3,6 @@ import styles from './Footer.module.css'
 type Contact = {
   area: string
   name: string
-  role: string
   email?: string
   phone?: string
 }
@@ -12,35 +11,30 @@ const contacts: Contact[] = [
   {
     area: 'Booking Colombia',
     name: 'Elkin Orozco Hoyos',
-    role: 'Agente y estrategia de gira',
     email: 'kyllarecords@hotmail.com',
     phone: '+57 3017387044',
   },
   {
     area: 'Booking Países Bajos',
     name: 'Blake Velasco',
-    role: 'Tour manager EU',
     email: 'kyllarecords@hotmail.com',
     phone: '+31 614374494',
   },
   {
     area: 'Road Management',
     name: 'Andrés Vergara',
-    role: 'Coordinación de ruta y hospitality',
     email: 'kyllarecords@hotmail.com',
     phone: '+57 3017387044',
   },
   {
     area: 'Press',
     name: 'Mario Rubiano',
-    role: 'PR & Media Relations',
     email: 'kyllarecords@hotmail.com',
     phone: '+57 3016597715',
   },
   {
     area: 'Comercial',
     name: 'Karolyne Brigante',
-    role: 'Alianzas y patrocinios',
     email: 'kyllarecords@hotmail.com',
     phone: '+57 3011129247',
   },
@@ -83,12 +77,11 @@ const Footer = () => {
       </div>
 
       <div className={styles.grid}>
-        {contacts.map(({ area, name, role, email, phone }) => (
+        {contacts.map(({ area, name, email, phone }) => (
           <article key={area} className={styles.card}>
             <p className={styles.area}>{area}</p>
             <div>
               <p className={styles.name}>{name}</p>
-              <p className={styles.role}>{role}</p>
             </div>
             <div className={styles.links}>
               {email && (
