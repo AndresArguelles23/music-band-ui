@@ -1,5 +1,12 @@
-import { type CSSProperties } from 'react'
+import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { type CSSProperties, useEffect, useRef } from 'react'
+
+import { shouldReduceMotion } from '../utils/motion'
+
 import styles from './Features.module.css'
+
+gsap.registerPlugin(ScrollTrigger)
 
 const services = [
   {
@@ -51,8 +58,52 @@ const services = [
 ]
 
 const Features = () => {
+  const sectionRef = useRef<HTMLElement>(null)
+  const listRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const section = sectionRef.current
+    const list = listRef.current
+    if (!section) return
+
+    const context = gsap.context(() => {
+      if (shouldReduceMotion()) return
+
+      gsap.from(section, {
+        opacity: 0,
+        y: 24,
+        duration: 0.8,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: section,
+          start: 'top 75%',
+          once: true,
+        },
+      })
+
+      if (!list) return
+
+      const articles = Array.from(list.querySelectorAll('article'))
+
+      gsap.from(articles, {
+        y: 20,
+        opacity: 0,
+        stagger: 0.1,
+        duration: 0.6,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: section,
+          start: 'top 75%',
+          once: true,
+        },
+      })
+    }, section)
+
+    return () => context.revert()
+  }, [])
+
   return (
-    <section className={`${styles.section} container`} id="features">
+    <section ref={sectionRef} className={`${styles.section} container`} id="features">
       <div className={styles.inner}>
         <header className={styles.header}>
           <p className={styles.kicker}>Servicios clave</p>
@@ -63,7 +114,7 @@ const Features = () => {
           </p>
         </header>
 
-        <div className={styles.list}>
+        <div ref={listRef} className={styles.list}>
           {services.map((service, index) => (
             <article
               key={service.title}

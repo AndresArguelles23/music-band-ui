@@ -1,10 +1,43 @@
+import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { useEffect, useRef } from 'react'
+
+import { shouldReduceMotion } from '../utils/motion'
+
 import styles from './Hero.module.css'
+
+gsap.registerPlugin(ScrollTrigger)
 
 const heroGraphic = '/images/hero.avif'
 
 const Hero = () => {
+  const sectionRef = useRef<HTMLElement>(null)
+
+  useEffect(() => {
+    const section = sectionRef.current
+    if (!section) return
+
+    const context = gsap.context(() => {
+      if (shouldReduceMotion()) return
+
+      gsap.from(section, {
+        opacity: 0,
+        y: 24,
+        duration: 0.8,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: section,
+          start: 'top 75%',
+          once: true,
+        },
+      })
+    }, section)
+
+    return () => context.revert()
+  }, [])
+
   return (
-    <section className={`${styles.hero} container`} id="artists">
+    <section ref={sectionRef} className={`${styles.hero} container`} id="artists">
       <div className={styles.content}>
         <p className={styles.eyebrow}>Banda en vivo a la carta</p>
         <h1>Eleva tu evento con un show que suena como tu playlist favorita</h1>

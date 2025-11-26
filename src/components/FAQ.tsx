@@ -1,9 +1,12 @@
 import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { useEffect, useId, useRef, useState } from 'react'
 
-import { canUseMotion } from '../utils/motion'
+import { canUseMotion, shouldReduceMotion } from '../utils/motion'
 
 import styles from './FAQ.module.css'
+
+gsap.registerPlugin(ScrollTrigger)
 
 type FAQItem = {
   question: string
@@ -35,6 +38,7 @@ const faqs: FAQItem[] = [
 
 const FAQ = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(0)
+  const sectionRef = useRef<HTMLElement>(null)
   const panelRefs = useRef<HTMLDivElement[]>([])
   const panelTimelines = useRef<Record<number, gsap.core.Timeline>>({})
   const panelPrefix = useId()
@@ -106,8 +110,31 @@ const FAQ = () => {
     }
   }, [])
 
+  useEffect(() => {
+    const section = sectionRef.current
+    if (!section) return
+
+    const context = gsap.context(() => {
+      if (shouldReduceMotion()) return
+
+      gsap.from(section, {
+        opacity: 0,
+        y: 24,
+        duration: 0.8,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: section,
+          start: 'top 75%',
+          once: true,
+        },
+      })
+    }, section)
+
+    return () => context.revert()
+  }, [])
+
   return (
-    <section className={`${styles.section} container`} id="faq">
+    <section ref={sectionRef} className={`${styles.section} container`} id="faq">
       <div className={styles.header}>
         <p className={styles.kicker}>Preguntas frecuentes</p>
         <h2>Todo lo que necesitas saber para armar tu próximo show.</h2>

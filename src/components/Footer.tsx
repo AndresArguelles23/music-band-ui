@@ -1,7 +1,11 @@
 import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { useEffect, useRef } from 'react'
 
-import { canUseMotion } from '../utils/motion'
+import { canUseMotion, shouldReduceMotion } from '../utils/motion'
 import styles from './Footer.module.css'
+
+gsap.registerPlugin(ScrollTrigger)
 
 type Contact = {
   area: string
@@ -74,6 +78,31 @@ const socials = [
 ]
 
 const Footer = () => {
+  const sectionRef = useRef<HTMLElement>(null)
+
+  useEffect(() => {
+    const section = sectionRef.current
+    if (!section) return
+
+    const context = gsap.context(() => {
+      if (shouldReduceMotion()) return
+
+      gsap.from(section, {
+        opacity: 0,
+        y: 24,
+        duration: 0.8,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: section,
+          start: 'top 75%',
+          once: true,
+        },
+      })
+    }, section)
+
+    return () => context.revert()
+  }, [])
+
   const handleEnter = (target: EventTarget & HTMLElement) => {
     if (!canUseMotion()) return
 
@@ -87,7 +116,7 @@ const Footer = () => {
   }
 
   return (
-    <footer className={`${styles.footer} container`} id="contact">
+    <footer ref={sectionRef} className={`${styles.footer} container`} id="contact">
       <div className={styles.header}>
         <p className={styles.kicker}>Contacto</p>
         <h3>Hablemos de tu próximo movimiento.</h3>
