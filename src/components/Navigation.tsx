@@ -7,7 +7,7 @@ const navItems = [
   { href: '#videos', label: 'Videos' },
   { href: '#about', label: 'Nosotros' },
   { href: '#faq', label: 'FAQ' },
-  { href: '#testimonials', label: 'Testimonios' },
+  { href: '#discography', label: 'Discografía' },
   { href: '#contact', label: 'Contacto' },
 ]
 
