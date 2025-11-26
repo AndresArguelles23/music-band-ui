@@ -6,7 +6,7 @@ import Footer from './components/Footer'
 import Hero from './components/Hero'
 import Navigation from './components/Navigation'
 import Shows from './components/Shows'
-import Testimonials from './components/Testimonials'
+import Discography from './components/Discography'
 
 function App() {
   return (
@@ -18,7 +18,7 @@ function App() {
         <Features />
         <Shows />
         <FAQ />
-        <Testimonials />
+        <Discography />
       </main>
       <Footer />
     </div>
