@@ -1,5 +1,7 @@
-import ensembleImage from '../assets/about-ensemble.svg'
 import styles from './About.module.css'
+
+const ensembleImage =
+  'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=1200&q=80'
 
 const About = () => {
   return (
@@ -31,7 +33,7 @@ const About = () => {
           </div>
 
           <figure className={styles.media}>
-            <img src={ensembleImage} alt="Ilustración del colectivo PulseWave en escena" loading="lazy" />
+            <img src={ensembleImage} alt="Equipo PulseWave reunido en una mesa de planificación" loading="lazy" />
             <figcaption>Equipo creativo en sintonía: gestión, producción y narrativa en un mismo pulso.</figcaption>
           </figure>
         </div>
