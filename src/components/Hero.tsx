@@ -19,20 +19,6 @@ const Hero = () => {
             Conoce nuestros servicios
           </a>
         </div>
-        <dl className={styles.metrics}>
-          <div>
-            <dt>Giras completadas</dt>
-            <dd>120+</dd>
-          </div>
-          <div>
-            <dt>Reproducciones</dt>
-            <dd>50M</dd>
-          </div>
-          <div>
-            <dt>Colaboraciones</dt>
-            <dd>30 ciudades</dd>
-          </div>
-        </dl>
       </div>
       <div className={styles.visual}>
         <img src={heroGraphic} alt="Escena musical en vivo" loading="lazy" />
