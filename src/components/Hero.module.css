@@ -102,39 +102,68 @@
   box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.45), 0 15px 40px rgba(99, 102, 241, 0.35);
 }
 
-.metrics {
+.bookingCta {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  grid-template-columns: minmax(0, 2fr) minmax(220px, 1fr);
   gap: clamp(var(--space-sm), 2vw, var(--space-lg));
-  margin: 0;
-  padding: clamp(var(--space-xs), 2vw, var(--space-sm));
-  list-style: none;
+  padding: clamp(var(--space-sm), 2vw, var(--space-md));
   background: rgba(255, 255, 255, 0.02);
   border-radius: 16px;
   border: 1px solid rgba(255, 255, 255, 0.06);
   box-shadow: 0 14px 40px rgba(0, 0, 0, 0.24);
+  align-items: center;
 }
 
-.metrics div {
+.bookingCopy {
   display: grid;
-  gap: var(--space-xxs);
-  align-items: center;
+  gap: var(--space-sm);
+}
+
+.bookingCopy h3 {
+  margin: 0;
+  font-size: 1.6rem;
+  color: #e2e8f0;
+}
+
+.bookingCopy p {
+  margin: 0;
+  color: var(--color-text-muted);
+}
+
+.eventBadges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-xs);
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.eventBadges li {
+  padding: 0.55rem 0.85rem;
+  border-radius: 10px;
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.04), rgba(99, 102, 241, 0.12));
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #cbd5e1;
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: 0.01em;
+}
+
+.bookingAction {
+  display: grid;
+  gap: var(--space-sm);
+  align-items: start;
   justify-items: start;
   padding: clamp(var(--space-sm), 2vw, var(--space-md));
+  background: linear-gradient(145deg, rgba(99, 102, 241, 0.12), rgba(34, 211, 238, 0.12));
   border-radius: 12px;
-  background: linear-gradient(145deg, rgba(255, 255, 255, 0.03), rgba(99, 102, 241, 0.1));
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
 }
 
-.metrics dt {
-  color: #94a3b8;
-  font-size: 0.95rem;
-}
-
-.metrics dd {
-  margin: 0.35rem 0 0;
-  font-size: 1.5rem;
-  color: #e2e8f0;
+.bookingAction span {
+  color: #f8fafc;
   font-weight: 700;
 }
 
@@ -178,8 +207,8 @@
     justify-content: center;
   }
 
-  .metrics {
-    gap: calc(var(--space-lg) + var(--space-xs));
+  .bookingCta {
+    grid-template-columns: 1fr;
   }
 
   .visual {
@@ -195,5 +224,14 @@
   .hero {
     gap: var(--space-lg);
     padding: var(--section-spacing) 0 calc(var(--section-spacing) * 0.75);
+  }
+
+  .bookingCta {
+    grid-template-columns: 1fr;
+    gap: var(--space-md);
+  }
+
+  .bookingAction {
+    width: 100%;
   }
 }
