@@ -37,7 +37,7 @@ const CreativePresence = () => {
           <figure className={styles.media}>
             <img
               className="imageHighlight"
-              src="/images/service-audiovisual.avif"
+              src="/images/Creativa.avif"
               alt="Integrantes de Elite Klan creando música en un ambiente iluminado"
               loading="lazy"
             />
