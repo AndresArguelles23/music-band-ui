@@ -4,15 +4,16 @@
 
 .header {
   max-width: 720px;
-  color: #e2e8f0;
+  color: var(--color-text);
 }
 
 .kicker {
   display: inline-block;
   padding: 0.35rem 0.7rem;
   border-radius: 12px;
-  background: rgba(45, 212, 191, 0.15);
-  color: #5eead4;
+  background: var(--gradient-pill);
+  color: var(--color-accent-soft);
+  border: 1px solid var(--color-border);
   font-weight: 700;
   letter-spacing: 0.04em;
   text-transform: uppercase;
@@ -20,7 +21,7 @@
 }
 
 .lead {
-  color: #cbd5e1;
+  color: var(--color-text-muted);
 }
 
 .grid {
@@ -34,8 +35,8 @@
   background: rgba(255, 255, 255, 0.03);
   border-radius: 16px;
   padding: clamp(var(--space-md), 2vw, var(--space-lg));
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  color: #e2e8f0;
+  border: 1px solid var(--color-border);
+  color: var(--color-text);
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
   display: grid;
   gap: var(--space-md);
@@ -95,7 +96,7 @@
 
 .description {
   margin: 0;
-  color: #cbd5e1;
+  color: var(--color-text-muted);
 }
 
 .points {
@@ -104,7 +105,7 @@
   list-style: none;
   display: grid;
   gap: var(--space-xs);
-  color: #cbd5e1;
+  color: var(--color-text-muted);
 }
 
 .points li {
