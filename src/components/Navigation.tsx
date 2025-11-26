@@ -5,7 +5,7 @@ import styles from './Navigation.module.css'
 const navItems = [
   { href: '#features', label: 'Servicios' },
   { href: '#videos', label: 'Videos' },
-  { href: '#artists', label: 'Artistas' },
+  { href: '#about', label: 'Nosotros' },
   { href: '#faq', label: 'FAQ' },
   { href: '#testimonials', label: 'Testimonios' },
   { href: '#contact', label: 'Contacto' },
