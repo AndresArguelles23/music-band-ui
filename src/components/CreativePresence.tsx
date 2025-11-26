@@ -27,11 +27,7 @@ const CreativePresence = () => {
               carrera se encuentra en una importante encrucijada que podría irrumpir en las listas de éxitos
               internacionales.
             </p>
-            <div className={styles.badges}>
-              <span className={styles.badge}>Reggaetón con clase</span>
-              <span className={styles.badge}>Raíces caribeñas</span>
-              <span className={styles.badge}>Visión global</span>
-            </div>
+            
           </div>
 
           <figure className={styles.media}>
