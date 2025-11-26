@@ -2,10 +2,10 @@
   position: relative;
   isolation: isolate;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: clamp(var(--section-gap), 4vw, calc(var(--section-gap) * 1.35));
-  align-items: start;
-  padding: calc(var(--section-spacing) * 1.35) 0 var(--section-spacing);
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: clamp(var(--section-gap), 4vw, calc(var(--section-gap) * 1.6));
+  align-items: center;
+  padding: calc(var(--section-spacing) * 1.5) 0 var(--section-spacing);
 }
 
 .hero::before {
@@ -19,35 +19,62 @@
   z-index: -1;
 }
 
+.hero::after {
+  content: '';
+  position: absolute;
+  right: -12%;
+  top: 6%;
+  width: 280px;
+  height: 280px;
+  background: conic-gradient(from 120deg, rgba(99, 102, 241, 0.22), rgba(34, 211, 238, 0.18),
+      rgba(244, 114, 182, 0.22));
+  filter: blur(95px);
+  opacity: 0.65;
+  z-index: -2;
+}
+
 .copy h1 {
-  font-size: clamp(2.5rem, 4vw + 1rem, 3.6rem);
-  margin: 0.5rem 0 0.75rem;
+  font-size: clamp(2.8rem, 4vw + 1.2rem, 4rem);
+  margin: 0.5rem 0 0.85rem;
   color: var(--color-text);
+  text-wrap: balance;
 }
 
 .copy {
   display: grid;
-  gap: var(--content-gap);
+  gap: clamp(var(--content-gap), 1.2vw, calc(var(--content-gap) * 1.15));
   color: var(--color-text-muted);
   max-width: 640px;
+}
+
+.highlight {
+  background: linear-gradient(120deg, rgba(99, 102, 241, 0.85), rgba(34, 211, 238, 0.8));
+  -webkit-background-clip: text;
+  color: transparent;
+  display: inline-block;
+  padding-inline: 0.2em;
+  text-shadow: 0 20px 40px rgba(99, 102, 241, 0.35);
 }
 
 .subtitle {
   max-width: 560px;
   margin: 0 0 calc(var(--space-lg) * 1.1);
   font-size: 1.05rem;
+  color: var(--color-text-muted);
 }
 
 .tagline {
   display: inline-block;
-  padding: var(--space-xs) var(--space-sm);
+  padding: 0.45rem 0.85rem;
   border-radius: 999px;
-  background: rgba(99, 102, 241, 0.12);
-  color: #c4b5fd;
-  font-weight: 600;
-  letter-spacing: 0.03em;
+  background: rgba(99, 102, 241, 0.18);
+  color: #e0e7ff;
+  font-weight: 700;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  font-size: 0.85rem;
+  font-size: 0.8rem;
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  box-shadow: 0 10px 28px rgba(99, 102, 241, 0.22);
 }
 
 .actions {
@@ -62,8 +89,8 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 0.85rem 1.3rem;
-  border-radius: 12px;
+  padding: 0.9rem 1.4rem;
+  border-radius: 14px;
   font-weight: 700;
   text-decoration: none;
   transition: transform 0.22s ease, box-shadow 0.22s ease, background-color 0.22s ease,
@@ -71,15 +98,17 @@
 }
 
 .primary {
-  background: linear-gradient(135deg, #6366f1, #a855f7);
+  background: linear-gradient(135deg, #818cf8, #22d3ee);
   color: #0b1021;
-  box-shadow: 0 15px 40px rgba(99, 102, 241, 0.35);
+  box-shadow: 0 20px 45px rgba(99, 102, 241, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.12);
 }
 
 .secondary {
   border: 1px solid rgba(148, 163, 184, 0.3);
   color: var(--color-text);
   background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(6px);
 }
 
 .primary:hover,
@@ -99,6 +128,44 @@
 .secondary:focus-visible {
   outline: none;
   box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.45), 0 15px 40px rgba(99, 102, 241, 0.35);
+}
+
+.metrics {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: clamp(var(--space-sm), 2vw, var(--space-lg));
+  margin-top: clamp(var(--space-sm), 2vw, var(--space-lg));
+}
+
+.metricCard {
+  padding: var(--space-md);
+  border-radius: 14px;
+  background: linear-gradient(140deg, rgba(255, 255, 255, 0.05), rgba(99, 102, 241, 0.08));
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: var(--shadow-ambient);
+  color: var(--color-text-muted);
+  display: grid;
+  gap: 0.35rem;
+  align-content: start;
+}
+
+.metricCard strong {
+  font-size: 1.85rem;
+  color: var(--color-text);
+  letter-spacing: -0.02em;
+}
+
+.metricLabel {
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-soft);
+}
+
+.metricCard p {
+  margin: 0;
+  font-size: 0.98rem;
 }
 
 .visual {
@@ -154,5 +221,9 @@
   .hero {
     gap: var(--space-lg);
     padding: var(--section-spacing) 0 calc(var(--section-spacing) * 0.75);
+  }
+
+  .metrics {
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
   }
 }
