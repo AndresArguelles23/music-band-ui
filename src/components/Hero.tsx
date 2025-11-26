@@ -6,7 +6,7 @@ const Hero = () => {
   return (
     <section className={`${styles.hero} container`} id="artists">
       <div className={styles.copy}>
-        <p className={styles.tagline}>Shows en vivo para bodas, cumpleaños y eventos</p>
+        <p className={styles.tagline}>Shows para todo tipo de eventos</p>
         <h1>Contrata a la banda que convierte tu celebración en un concierto</h1>
         <p className={styles.subtitle}>
           Animamos tu fiesta con un repertorio a medida, sonido profesional y la energía que
