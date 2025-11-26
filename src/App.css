@@ -6,6 +6,7 @@
     var(--color-surface);
   color: var(--color-text);
   padding-bottom: var(--space-xl);
+  letter-spacing: var(--text-spacing-relaxed);
 }
 
 main {
@@ -13,4 +14,6 @@ main {
   flex-direction: column;
   gap: calc(var(--section-gap) * 1.3);
   padding-block: clamp(1rem, 2vw, 2.25rem);
+  align-items: stretch;
+  line-height: 1.8;
 }
