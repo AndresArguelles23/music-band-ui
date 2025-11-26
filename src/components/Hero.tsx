@@ -5,11 +5,11 @@ const Hero = () => {
   return (
     <section className={`${styles.hero} container`} id="artists">
       <div className={styles.copy}>
-        <p className={styles.tagline}>Producción y management musical</p>
-        <h1>Haz que tu banda se escuche en todas partes</h1>
+        <p className={styles.tagline}>Shows en vivo para bodas, cumpleaños y eventos</p>
+        <h1>Contrata a la banda que convierte tu celebración en un concierto</h1>
         <p className={styles.subtitle}>
-          Creamos experiencias en vivo impecables, lanzamientos que destacan y estrategias
-          digitales que conectan con tu audiencia.
+          Animamos tu fiesta con un repertorio a medida, sonido profesional y la energía que
+          hará que tus invitados no dejen de bailar.
         </p>
         <div className={styles.actions}>
           <a className={styles.primary} href="#contact">
