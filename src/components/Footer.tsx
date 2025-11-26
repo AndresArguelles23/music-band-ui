@@ -25,10 +25,10 @@ const contacts: Contact[] = [
   },
   {
     area: 'Road Management',
-    name: 'Laura Pineda',
+    name: 'Andrés Vergara',
     role: 'Coordinación de ruta y hospitality',
     email: 'kyllarecords@hotmail.com',
-    phone: '+57 311 506 2400',
+    phone: '+57 3017387044',
   },
   {
     area: 'Press',
