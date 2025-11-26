@@ -169,7 +169,9 @@ const Shows = () => {
       { scale: 1, opacity: 1, duration: 0.45, ease: 'power2.out' },
     )
 
-    return () => animation.kill()
+    return () => {
+      animation.kill()
+    }
   }, [activeIndex])
 
   useEffect(() => {
