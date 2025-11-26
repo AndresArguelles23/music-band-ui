@@ -54,7 +54,7 @@ const Features = () => {
           cada show sume a su historia.
         </p>
       </div>
-      <div className={`${styles.grid} grid container--dense`}>
+      <div className={styles.grid}>
         {services.map((service) => (
           <article key={service.title} className={styles.card}>
             <figure className={styles.media}>
