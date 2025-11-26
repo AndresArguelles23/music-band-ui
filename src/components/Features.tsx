@@ -1,6 +1,4 @@
 import { type CSSProperties } from 'react'
-
-import featureIcon from '../assets/spark-icon.svg'
 import styles from './Features.module.css'
 
 const services = [
