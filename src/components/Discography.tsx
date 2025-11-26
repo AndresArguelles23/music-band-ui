@@ -1,6 +1,8 @@
 import styles from './Discography.module.css'
 
-const albumUrl = 'https://open.spotify.com/album/7nDRET5n3NjBfIeyTo58dH'
+const albumId = '7nDRET5n3NjBfIeyTo58dH'
+const albumUrl = `https://open.spotify.com/album/${albumId}`
+const albumEmbedUrl = `https://open.spotify.com/embed/album/${albumId}?utm_source=generator&theme=0`
 
 type Track = {
   title: string
@@ -103,6 +105,11 @@ const tracks: Track[] = [
   },
 ]
 
+const uniqueTracks = tracks.filter(
+  (track, index, self) =>
+    self.findIndex(({ title, artist }) => title === track.title && artist === track.artist) === index,
+)
+
 const Discography = () => {
   return (
     <section className={`${styles.section} container`} id="discography">
@@ -129,14 +136,14 @@ const Discography = () => {
           <div className={styles.playerEmbed}>
             <iframe
               title="Reproductor álbum Elite Klan en la Casa"
-              src="https://open.spotify.com/embed/album/7nDRET5n3NjBfIeyTo58dH?utm_source=generator&theme=0"
+              src={albumEmbedUrl}
               loading="lazy"
               allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
             />
           </div>
 
           <ul className={styles.trackList}>
-            {tracks.map((track, index) => (
+            {uniqueTracks.map((track, index) => (
               <li key={track.title} className={styles.trackRow}>
                 <div className={styles.trackMeta}>
                   <span className={styles.index}>{String(index + 1).padStart(2, '0')}</span>
