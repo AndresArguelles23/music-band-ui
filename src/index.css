@@ -9,6 +9,12 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  --space-xxs: 0.25rem;
+  --space-xs: 0.5rem;
+  --space-sm: 0.75rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
 }
 
 * {
@@ -43,4 +49,16 @@ p {
 
 #root {
   min-height: 100vh;
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 1200px;
+  padding-inline: var(--space-lg);
+}
+
+@media (max-width: 640px) {
+  .container {
+    padding-inline: var(--space-md);
+  }
 }

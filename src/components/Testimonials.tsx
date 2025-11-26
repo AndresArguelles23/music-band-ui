@@ -23,7 +23,7 @@ const testimonials = [
 
 const Testimonials = () => {
   return (
-    <section className={styles.section} id="testimonials">
+    <section className={`${styles.section} container`} id="testimonials">
       <div className={styles.header}>
         <p className={styles.kicker}>Lo que dicen nuestros artistas</p>
         <h2>Historias que resuenan en cada escenario.</h2>

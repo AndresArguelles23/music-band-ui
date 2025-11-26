@@ -5,11 +5,11 @@
     radial-gradient(circle at 50% 100%, rgba(168, 85, 247, 0.15), transparent 30%),
     #0b1021;
   color: #e2e8f0;
-  padding-bottom: 2rem;
+  padding-bottom: var(--space-xl);
 }
 
 main {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: var(--space-xl);
 }
