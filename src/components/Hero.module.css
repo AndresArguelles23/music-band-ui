@@ -3,7 +3,7 @@
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: var(--space-xl);
   align-items: center;
-  padding: calc(var(--space-xl) * 2) 0 var(--space-xl);
+  padding: calc(var(--space-xl) * 2) 0 calc(var(--space-xl) * 1.25);
 }
 
 .copy h1 {
@@ -121,7 +121,9 @@
 
 .visual img {
   width: 100%;
-  max-width: 480px;
+  max-width: clamp(360px, 52vw, 520px);
+  max-height: 620px;
+  object-fit: cover;
   border-radius: 20px;
   background: radial-gradient(circle at 20% 20%, rgba(99, 102, 241, 0.15), transparent 45%),
     radial-gradient(circle at 80% 20%, rgba(244, 114, 182, 0.15), transparent 55%),
@@ -150,13 +152,43 @@
   margin-bottom: 0.5rem;
 }
 
-@media (max-width: 640px) {
+@media (min-width: 641px) and (max-width: 1024px) {
   .hero {
-    padding: calc(var(--space-xl) + var(--space-md)) 0 var(--space-md);
+    grid-template-columns: 1fr;
+    gap: calc(var(--space-lg) + var(--space-sm));
+    padding: calc(var(--space-xl) * 1.75) 0 var(--space-xl);
+  }
+
+  .actions {
+    justify-content: center;
+  }
+
+  .metrics {
+    gap: calc(var(--space-lg) + var(--space-xs));
+  }
+
+  .visual {
+    justify-items: center;
+  }
+
+  .visual img {
+    max-width: clamp(420px, 64vw, 560px);
   }
 
   .badge {
     position: static;
-    margin-top: 1rem;
+    margin-top: var(--space-lg);
+  }
+}
+
+@media (max-width: 640px) {
+  .hero {
+    gap: var(--space-lg);
+    padding: calc(var(--space-xl) + var(--space-md)) 0 var(--space-lg);
+  }
+
+  .badge {
+    position: static;
+    margin-top: var(--space-md);
   }
 }
