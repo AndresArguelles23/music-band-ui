@@ -157,7 +157,7 @@ const Navigation = () => {
           style={{ '--progress': `${navProgress}%` } as CSSProperties}
         />
       </div>
-      <div className={styles.brand}>PulseWave</div>
+      <div className={styles.brand}>Elite Klan</div>
       <nav className={styles.navLinks} aria-label="Primary">
         {navItems.map((item) => (
           <a key={item.href} href={item.href} onClick={() => handleNavClick(item.href)}>

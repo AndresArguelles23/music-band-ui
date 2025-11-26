@@ -8,14 +8,14 @@ const About = () => {
       <div className={styles.inner}>
         <header className={styles.header}>
           <p className={styles.overline}>Sobre el colectivo</p>
-          <h2>PulseWave</h2>
+          <h2>Elite Klan</h2>
           <p className={styles.subtitle}>Una presencia creativa y operativa</p>
         </header>
 
         <div className={styles.grid}>
           <div className={styles.copy}>
             <p>
-              PulseWave nació entre salas de ensayo y escenarios improvisados, uniendo productores,
+              Elite Klan nació entre salas de ensayo y escenarios improvisados, uniendo productores,
               mánagers y creativos que comparten la obsesión por un sonido pulido y experiencias en
               vivo que se sienten únicas en cada ciudad.
             </p>
@@ -32,7 +32,7 @@ const About = () => {
           </div>
 
           <figure className={styles.media}>
-            <img src={ensembleImage} alt="Equipo PulseWave reunido en una mesa de planificación" loading="lazy" />
+            <img src={ensembleImage} alt="Equipo Elite Klan reunido en una mesa de planificación" loading="lazy" />
             <figcaption>Equipo creativo en sintonía: gestión, producción y narrativa en un mismo pulso.</figcaption>
           </figure>
         </div>
