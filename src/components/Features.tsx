@@ -11,9 +11,9 @@ const services = [
     idealFor:
       'Ideal para: eventos sociales y empresariales, discotecas, bares y activaciones que buscan una rumba garantizada.',
     highlights: [
-      { icon: '🎤', text: 'Presentación de alta calidad en REGGAETON, DANCE HALL, CHAMPETA URBANA, LATIN TRAP y AFROBEAT' },
-      { icon: '💃', text: 'Formato flexible: con o sin bailarinas según las exigencias del cliente' },
-      { icon: '🕺', text: 'Animaciones y dinámica en escena para que cada momento mantenga la energía arriba' },
+      { text: 'Presentación de alta calidad en REGGAETON, DANCE HALL, CHAMPETA URBANA, LATIN TRAP y AFROBEAT' },
+      { text: 'Formato flexible: con o sin bailarinas según las exigencias del cliente' },
+      { text: 'Animaciones y dinámica en escena para que cada momento mantenga la energía arriba' },
     ],
     image: '/images/service-perreo.avif',
     alt: 'DJ animando a una multitud en un club con luces rosas',
@@ -27,9 +27,9 @@ const services = [
     idealFor:
       'Ideal para: eventos sociales de todo tipo, aniversarios empresariales, lanzamientos y celebraciones en establecimientos.',
     highlights: [
-      { icon: '💡', text: 'Iluminación de ambientación y profesional para tarimas y espectáculos' },
-      { icon: '🎆', text: 'Efectos especiales y escenografía: Ventury, Crio Jet, humo y burbujas' },
-      { icon: '🔊', text: 'Sonido con DJ y amplificación, más red de grupos musicales aliados' },
+      { text: 'Iluminación de ambientación y profesional para tarimas y espectáculos' },
+      { text: 'Efectos especiales y escenografía: Ventury, Crio Jet, humo y burbujas' },
+      { text: 'Sonido con DJ y amplificación, más red de grupos musicales aliados' },
     ],
     image: '/images/service-eventos.avif',
     alt: 'Escenario iluminado con cabinas de producción durante un show',
@@ -41,9 +41,9 @@ const services = [
     includes: 'Incluye: crew de filmación, dirección creativa y edición en múltiples formatos.',
     idealFor: 'Ideal para: producciones musicales, videos promocionales y contenido para plataformas digitales.',
     highlights: [
-      { icon: '🎥', text: 'Producción audiovisual integral con grabación, dirección y crew especializado' },
-      { icon: '✂️', text: 'Edición multi-formato para redes, campañas y material promocional' },
-      { icon: '🚀', text: 'Entregables listos para impulsar la difusión de tu proyecto' },
+      { text: 'Producción audiovisual integral con grabación, dirección y crew especializado' },
+      { text: 'Edición multi-formato para redes, campañas y material promocional' },
+      { text: 'Entregables listos para impulsar la difusión de tu proyecto' },
     ],
     image: '/images/service-audiovisual.avif',
     alt: 'Camarógrafo grabando un concierto con luces moradas',
@@ -93,9 +93,6 @@ const Features = () => {
                 <ul className={styles.points} aria-label={`Aspectos clave de ${service.title}`}>
                   {service.highlights.map((point) => (
                     <li key={point.text}>
-                      <span className={styles.pointIcon} aria-hidden>
-                        {point.icon}
-                      </span>
                       <span className={styles.pointText}>{point.text}</span>
                     </li>
                   ))}
@@ -104,7 +101,6 @@ const Features = () => {
 
               <figure className={styles.media}>
                 <img className="imageHighlight" src={service.image} alt={service.alt} loading="lazy" />
-                <figcaption>Escenas que cuentan la energía y el enfoque de cada propuesta.</figcaption>
               </figure>
             </article>
           ))}
