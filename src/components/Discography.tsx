@@ -1,51 +1,63 @@
 import styles from './Discography.module.css'
 
-const playlistUrl = 'https://open.spotify.com/playlist/37i9dQZF1DX3WvGXE8FqYX'
+const playlistUrl = 'https://open.spotify.com/playlist/37i9dQZF1DWXRqgorJj26U'
 
-const tracks = [
+type Track = {
+  title: string
+  artist: string
+  album: string
+  duration: string
+  cover: string
+  spotifyUrl: string
+  highlight?: boolean
+  description?: string
+  tag?: string
+}
+
+const tracks: Track[] = [
   {
-    title: 'Luz del Horizonte',
-    artist: 'PulseWave x Aurora Norte',
-    album: 'Cielo Eléctrico',
-    duration: '3:48',
-    cover: 'https://i.scdn.co/image/ab67616d0000b273f81fa1b6e0d2b6fb0f3a657a',
-    spotifyUrl: 'https://open.spotify.com/track/0eGsygTp906u18L0Oimnem',
+    title: 'De Música Ligera',
+    artist: 'Soda Stereo',
+    album: 'Canción Animal',
+    duration: '3:30',
+    cover: 'https://upload.wikimedia.org/wikipedia/en/5/52/CancionAnimalSodaStereo.jpg',
+    spotifyUrl: 'https://open.spotify.com/track/6R6ZAavr9ISYJkH4Na4wTI',
     highlight: true,
     description:
-      'Guitarras de neón, un estribillo inolvidable y sintetizadores que levantan cualquier escenario.',
+      'El himno del rock latino que enciende cualquier set: guitarras filosas y un coro eterno listo para reproducir.',
+    tag: 'Clásico',
   },
   {
-    title: 'Resonancia Polar',
-    artist: 'Luna Rivera',
-    album: 'Noches Prisma',
-    duration: '4:02',
-    cover: 'https://i.scdn.co/image/ab67616d0000b273e7a3addc4dfd78e93d3a5b1c',
-    spotifyUrl: 'https://open.spotify.com/track/4uLU6hMCjMI75M1A2tKUQC',
+    title: 'Matador',
+    artist: 'Los Fabulosos Cadillacs',
+    album: 'El León',
+    duration: '4:38',
+    cover: 'https://upload.wikimedia.org/wikipedia/en/7/76/El_leon_-_Los_Fabulosos_Cadillacs.jpg',
+    spotifyUrl: 'https://open.spotify.com/track/3Qm86XLflmIXVm1wcwkgDK',
   },
   {
-    title: 'Latido Infinito',
-    artist: 'Diego P. & PulseWave',
-    album: 'Plan de Vuelo',
-    duration: '3:27',
-    cover: 'https://i.scdn.co/image/ab67616d0000b2739ac6de4d3eaf8d9f3b0f7c23',
-    spotifyUrl: 'https://open.spotify.com/track/1301WleyT98MSxVHPZCA6M',
+    title: 'Flaca',
+    artist: 'Andrés Calamaro',
+    album: 'Alta Suciedad',
+    duration: '4:58',
+    cover: 'https://upload.wikimedia.org/wikipedia/en/5/5c/AltaSuciedad.jpg',
+    spotifyUrl: 'https://open.spotify.com/track/6V2oYFfXYiC1ZWeN6kVeFQ',
   },
   {
-    title: 'Cables y Carreteras',
-    artist: 'Trío Horizonte',
-    album: 'Kilómetro 00',
-    duration: '3:59',
-    cover: 'https://i.scdn.co/image/ab67616d0000b273779fba7eaae0c9641a31f172',
-    spotifyUrl: 'https://open.spotify.com/track/6rqhFgbbKwnb9MLmUQDhG6',
-    tag: 'En vivo',
+    title: 'Lamento Boliviano',
+    artist: 'Enanitos Verdes',
+    album: 'Big Bang',
+    duration: '3:47',
+    cover: 'https://upload.wikimedia.org/wikipedia/en/9/9b/Big_Bang_%28Enanitos_Verdes_album%29.jpg',
+    spotifyUrl: 'https://open.spotify.com/track/4VqPOruhp5EdPBeR92t6lQ',
   },
   {
-    title: 'Mapa de Chispas',
-    artist: 'PulseWave',
-    album: 'Set de Media Noche',
-    duration: '4:15',
-    cover: 'https://i.scdn.co/image/ab67616d0000b2732e2a2f4b6d0e9876c6d2b0e6',
-    spotifyUrl: 'https://open.spotify.com/track/7ouMYWpwJ422jRcDASZB7P',
+    title: 'Mariposa Tecknicolor',
+    artist: 'Fito Páez',
+    album: 'Circo Beat',
+    duration: '3:35',
+    cover: 'https://upload.wikimedia.org/wikipedia/en/f/f5/Circo_Beat.jpg',
+    spotifyUrl: 'https://open.spotify.com/track/4s0Q6kv3CsegdeJyHzmfk9',
   },
 ]
 
@@ -81,7 +93,7 @@ const Discography = () => {
                 target="_blank"
                 rel="noreferrer"
               >
-                Escuchar en Spotify
+                Reproducir en Spotify
               </a>
               <a className={styles.secondaryButton} href={playlistUrl} target="_blank" rel="noreferrer">
                 Abrir playlist completa
@@ -94,11 +106,20 @@ const Discography = () => {
           <div className={styles.listHeader}>
             <div>
               <p className={styles.listKicker}>Lista activa</p>
-              <h3>Selección curada por el equipo</h3>
+              <h3>Rock argentino que suena de verdad</h3>
             </div>
             <a className={styles.listLink} href={playlistUrl} target="_blank" rel="noreferrer">
               Reproducir en Spotify
             </a>
+          </div>
+
+          <div className={styles.playerEmbed}>
+            <iframe
+              title="Reproductor de playlist Rock Argentino"
+              src="https://open.spotify.com/embed/playlist/37i9dQZF1DWXRqgorJj26U?utm_source=generator&theme=0"
+              loading="lazy"
+              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+            />
           </div>
 
           <ul className={styles.trackList}>
