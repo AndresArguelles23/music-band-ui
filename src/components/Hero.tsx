@@ -1,7 +1,6 @@
 import styles from './Hero.module.css'
 
-const heroGraphic =
-  'https://images.unsplash.com/photo-1522125670776-3c7abb882bc2?auto=format&fit=crop&w=1200&q=80'
+const heroGraphic = '/images/hero.avif'
 
 const Hero = () => {
   return (
