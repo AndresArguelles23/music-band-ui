@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState, type MouseEvent, type WheelEvent } from 'react'
 
+import { useSectionVisibility } from '../hooks/useSectionVisibility'
 import styles from './Shows.module.css'
 
 type VideoShowcase = {
@@ -52,6 +53,7 @@ const videos: VideoShowcase[] = [
 ]
 
 const Shows = () => {
+  const { ref, isVisible } = useSectionVisibility()
   const [activeIndex, setActiveIndex] = useState(videos.length)
   const [isPaused, setIsPaused] = useState(false)
   const [isInstant, setIsInstant] = useState(false)
@@ -156,7 +158,11 @@ const Shows = () => {
     ((idx % videos.length) + videos.length) % videos.length === visibleIndex
 
   return (
-    <section className={`${styles.section} container`} id="videos">
+    <section
+      ref={ref}
+      className={`${styles.section} container ${isVisible ? 'is-visible' : ''}`}
+      id="videos"
+    >
       <header className={styles.header}>
         <p className={styles.kicker}>Videos</p>
         <h2>Revive los momentos del grupo en todos sus formatos.</h2>

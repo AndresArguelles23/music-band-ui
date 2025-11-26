@@ -1,3 +1,4 @@
+import { useSectionVisibility } from '../hooks/useSectionVisibility'
 import styles from './Discography.module.css'
 
 const albumId = '7nDRET5n3NjBfIeyTo58dH'
@@ -5,8 +6,14 @@ const albumUrl = `https://open.spotify.com/album/${albumId}`
 const albumEmbedUrl = `https://open.spotify.com/embed/album/${albumId}?utm_source=generator&theme=0`
 
 const Discography = () => {
+  const { ref, isVisible } = useSectionVisibility()
+
   return (
-    <section className={`${styles.section} container`} id="discography">
+    <section
+      ref={ref}
+      className={`${styles.section} container ${isVisible ? 'is-visible' : ''}`}
+      id="discography"
+    >
       <div className={styles.header}>
         <p className={styles.kicker}>Discografía</p>
         <h2>Álbum listo para streaming</h2>
