@@ -1,4 +1,6 @@
 import { useEffect, useRef, useState, type MouseEvent, type WheelEvent } from 'react'
+import { gsap } from 'gsap'
+import ScrollTrigger from 'gsap/ScrollTrigger'
 
 import styles from './Shows.module.css'
 
@@ -57,6 +59,8 @@ const Shows = () => {
   const [isInstant, setIsInstant] = useState(false)
   const wheelLockRef = useRef(false)
   const trackRef = useRef<HTMLDivElement>(null)
+  const carouselRef = useRef<HTMLDivElement>(null)
+  const cardsRef = useRef<HTMLElement[]>([])
   const activeIndexRef = useRef(activeIndex)
 
   const loopedVideos = [...videos, ...videos, ...videos]
@@ -155,6 +159,40 @@ const Shows = () => {
   const isCardVisible = (idx: number) =>
     ((idx % videos.length) + videos.length) % videos.length === visibleIndex
 
+  useEffect(() => {
+    const card = cardsRef.current[activeIndex]
+    if (!card) return
+
+    const animation = gsap.fromTo(
+      card,
+      { scale: 0.94, opacity: 0.4 },
+      { scale: 1, opacity: 1, duration: 0.45, ease: 'power2.out' },
+    )
+
+    return () => {
+      animation.kill()
+    }
+  }, [activeIndex])
+
+  useEffect(() => {
+    const carousel = carouselRef.current
+    if (!carousel) return
+
+    gsap.registerPlugin(ScrollTrigger)
+
+    const trigger = ScrollTrigger.create({
+      trigger: carousel,
+      start: 'top bottom',
+      end: 'bottom top',
+      onEnter: () => setIsPaused(false),
+      onEnterBack: () => setIsPaused(false),
+      onLeave: () => setIsPaused(true),
+      onLeaveBack: () => setIsPaused(true),
+    })
+
+    return () => trigger.kill()
+  }, [])
+
   return (
     <section className={`${styles.section} container`} id="videos">
       <header className={styles.header}>
@@ -181,6 +219,7 @@ const Shows = () => {
           role="region"
           aria-roledescription="Carrusel de videos"
           aria-label="Videos destacados del grupo"
+          ref={carouselRef}
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
           onWheel={handleWheel}
@@ -202,6 +241,12 @@ const Shows = () => {
                   onMouseLeave={resetTilt}
                   tabIndex={isCurrent ? 0 : -1}
                   aria-hidden={!isCurrent}
+                  ref={(element) => {
+                    if (element) {
+                      cardsRef.current[idx] = element
+                    }
+                  }}
+                  style={{ willChange: isCurrent ? 'transform' : undefined }}
                 >
                   <div className={styles.frame}>
                     <iframe
