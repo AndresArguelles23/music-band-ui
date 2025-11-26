@@ -60,11 +60,7 @@ const Navigation = () => {
 
     const targetElement = document.querySelector(navTarget)
 
-    if (!targetElement) {
-      setNavActive(false)
-      setNavTarget(null)
-      return
-    }
+    if (!targetElement) return
 
     const startScroll = window.scrollY
     const targetScroll = window.scrollY + targetElement.getBoundingClientRect().top
@@ -125,6 +121,14 @@ const Navigation = () => {
 
   const handleNavClick = (href: string) => {
     setMenuOpen(false)
+    const targetElement = document.querySelector(href)
+
+    if (!targetElement) {
+      setNavActive(false)
+      setNavTarget(null)
+      return
+    }
+
     setNavTarget(href)
     setNavProgress(8)
     setNavActive(true)
