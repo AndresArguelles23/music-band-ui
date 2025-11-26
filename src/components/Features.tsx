@@ -1,4 +1,7 @@
+import audiovisualIllustration from '../assets/audiovisual-illustration.svg'
+import eventIllustration from '../assets/event-illustration.svg'
 import featureIcon from '../assets/spark-icon.svg'
+import perreoIllustration from '../assets/perreo-illustration.svg'
 import styles from './Features.module.css'
 
 const services = [
@@ -11,6 +14,8 @@ const services = [
       'Dinámicas participativas, giveaways y cápsulas cortas para redes sociales',
       'Producción ágil para venues, festivales o activaciones con marcas',
     ],
+    image: perreoIllustration,
+    alt: 'DJ con luces de neón y público en fiesta urbana',
   },
   {
     title: 'Producción de Eventos',
@@ -21,6 +26,8 @@ const services = [
       'Coordinación con tour managers, hospitality, acreditaciones y seguridad',
       'Integración con ticketing, experiencias VIP y métricas post-evento',
     ],
+    image: eventIllustration,
+    alt: 'Escenario con pantallas y cabinas de iluminación encendidas',
   },
   {
     title: 'Producción Audio Visual',
@@ -31,6 +38,8 @@ const services = [
       'Guion, dirección y edición con entregables en múltiples formatos y ratios',
       'Entrega rápida de highlights para social media y campañas posteriores',
     ],
+    image: audiovisualIllustration,
+    alt: 'Cámaras grabando un show con interfaz de video resaltada',
   },
 ]
 
@@ -48,6 +57,9 @@ const Features = () => {
       <div className={styles.grid}>
         {services.map((service) => (
           <article key={service.title} className={styles.card}>
+            <figure className={styles.media}>
+              <img src={service.image} alt={service.alt} loading="lazy" />
+            </figure>
             <div className={styles.cardHeader}>
               <img src={featureIcon} alt="Icono destacado" aria-hidden />
               <div>
