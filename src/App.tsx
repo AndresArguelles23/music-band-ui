@@ -1,4 +1,5 @@
 import './App.css'
+import About from './components/About'
 import Features from './components/Features'
 import Footer from './components/Footer'
 import Hero from './components/Hero'
@@ -11,6 +12,7 @@ function App() {
       <Navigation />
       <main>
         <Hero />
+        <About />
         <Features />
         <Testimonials />
       </main>
