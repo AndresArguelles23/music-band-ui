@@ -205,32 +205,6 @@
   font-size: 0.9rem;
 }
 
-.note {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px dashed rgba(255, 255, 255, 0.2);
-  border-radius: 14px;
-  padding: var(--space-md) var(--space-lg);
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-md);
-  align-items: center;
-  justify-content: space-between;
-}
-
-.link {
-  color: #c7d2fe;
-  font-weight: 700;
-  text-decoration: none;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-}
-
-.link::after {
-  content: '→';
-  font-size: 0.95rem;
-}
-
 @media (max-width: 640px) {
   .section {
     padding: var(--space-lg) 0;

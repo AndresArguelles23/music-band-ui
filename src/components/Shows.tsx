@@ -123,16 +123,6 @@ const Shows = () => {
           </article>
         ))}
       </div>
-
-      <div className={styles.note}>
-        <p>
-          ¿Quieres ver el deck completo? Envía tu venue y fechas tentativas y te compartimos reels,
-          galerías y riders listos para prensa.
-        </p>
-        <a className={styles.link} href="#contact">
-          Solicitar carpeta de shows
-        </a>
-      </div>
     </section>
   )
 }
