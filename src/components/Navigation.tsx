@@ -1,4 +1,4 @@
-import { type CSSProperties, useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 import styles from './Navigation.module.css'
 
@@ -13,32 +13,8 @@ const navItems = [
 
 const Navigation = () => {
   const [menuOpen, setMenuOpen] = useState(false)
-  const [scrollProgress, setScrollProgress] = useState(0)
-  const [navTarget, setNavTarget] = useState<string | null>(null)
-  const [navProgress, setNavProgress] = useState(0)
-  const [navActive, setNavActive] = useState(false)
   const menuButtonRef = useRef<HTMLButtonElement>(null)
   const panelRef = useRef<HTMLDivElement>(null)
-  const settleTimeoutRef = useRef<number | null>(null)
-
-  useEffect(() => {
-    let frameId: number
-
-    const updateProgress = () => {
-      const scrollTop = window.scrollY
-      const scrollableHeight = document.documentElement.scrollHeight - window.innerHeight
-      const nextProgress = scrollableHeight > 0 ? (scrollTop / scrollableHeight) * 100 : 0
-
-      setScrollProgress(nextProgress)
-      frameId = window.requestAnimationFrame(updateProgress)
-    }
-
-    frameId = window.requestAnimationFrame(updateProgress)
-
-    return () => {
-      window.cancelAnimationFrame(frameId)
-    }
-  }, [])
 
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
@@ -53,81 +29,10 @@ const Navigation = () => {
     }
   }, [])
 
-  useEffect(() => {
-    if (!navTarget) {
-      return
-    }
-
-    const targetElement = document.querySelector(navTarget)
-
-    if (!targetElement) {
-      setNavActive(false)
-      setNavTarget(null)
-      return
-    }
-
-    const startScroll = window.scrollY
-    const targetScroll = window.scrollY + targetElement.getBoundingClientRect().top
-    const travelDistance = Math.max(Math.abs(targetScroll - startScroll), 1)
-
-    let frameId: number
-
-    const animate = () => {
-      const currentScroll = window.scrollY
-      const traveled = Math.min(Math.abs(currentScroll - startScroll), travelDistance)
-      const progressRatio = Math.min(traveled / travelDistance, 1)
-
-      setNavProgress(Math.max(5, progressRatio * 100))
-      frameId = window.requestAnimationFrame(animate)
-    }
-
-    frameId = window.requestAnimationFrame(animate)
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const hasIntersected = entries.some((entry) => entry.isIntersecting)
-
-        if (!hasIntersected) return
-
-        setNavProgress(100)
-        if (settleTimeoutRef.current !== null) {
-          window.clearTimeout(settleTimeoutRef.current)
-        }
-
-        settleTimeoutRef.current = window.setTimeout(() => {
-          setNavActive(false)
-          setNavTarget(null)
-        }, 260)
-        observer.disconnect()
-      },
-      {
-        rootMargin: '-15% 0px -60% 0px',
-        threshold: 0.25,
-      },
-    )
-
-    observer.observe(targetElement)
-
-    return () => {
-      window.cancelAnimationFrame(frameId)
-      observer.disconnect()
-      if (settleTimeoutRef.current !== null) {
-        window.clearTimeout(settleTimeoutRef.current)
-      }
-    }
-  }, [navTarget])
-
   const closeMenu = () => setMenuOpen(false)
 
   const handleToggleMenu = () => {
     setMenuOpen((prev) => !prev)
-  }
-
-  const handleNavClick = (href: string) => {
-    setMenuOpen(false)
-    setNavTarget(href)
-    setNavProgress(8)
-    setNavActive(true)
   }
 
   const handleBlur = () => {
@@ -147,20 +52,10 @@ const Navigation = () => {
 
   return (
     <header className={styles.header}>
-      <div className={`${styles.progressContainer} ${navActive ? styles.progressActive : ''}`} aria-hidden>
-        <span
-          className={styles.progressBar}
-          style={{ '--progress': `${scrollProgress}%` } as CSSProperties}
-        />
-        <span
-          className={`${styles.progressBarAccent} ${navActive ? styles.progressBarAccentVisible : ''}`}
-          style={{ '--progress': `${navProgress}%` } as CSSProperties}
-        />
-      </div>
       <div className={styles.brand}>PulseWave</div>
       <nav className={styles.navLinks} aria-label="Primary">
         {navItems.map((item) => (
-          <a key={item.href} href={item.href} onClick={() => handleNavClick(item.href)}>
+          <a key={item.href} href={item.href}>
             {item.label}
           </a>
         ))}
@@ -197,12 +92,7 @@ const Navigation = () => {
         ref={panelRef}
       >
         {navItems.map((item) => (
-          <a
-            key={item.href}
-            href={item.href}
-            role="menuitem"
-            onClick={() => handleNavClick(item.href)}
-          >
+          <a key={item.href} href={item.href} role="menuitem" onClick={closeMenu}>
             {item.label}
           </a>
         ))}
