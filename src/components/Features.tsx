@@ -68,9 +68,7 @@ const Features = () => {
             className={styles.card}
             style={{ '--delay': `${index * 120}ms` } as CSSProperties}
           >
-            <figure className={styles.media}>
-              <img src={service.image} alt={service.alt} loading="lazy" />
-            </figure>
+            
             <div className={styles.cardHeader}>
               <span className={styles.badge}>{String(index + 1).padStart(2, '0')}</span>
               <div className={styles.titleBlock}>
