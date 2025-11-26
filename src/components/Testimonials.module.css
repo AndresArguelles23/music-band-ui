@@ -32,6 +32,8 @@
   padding: var(--space-lg);
   color: #e2e8f0;
   box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
+  transition: transform 200ms ease, box-shadow 200ms ease,
+    border-color 200ms ease, outline-color 200ms ease;
 }
 
 blockquote {
@@ -39,6 +41,21 @@ blockquote {
   color: #cbd5e1;
   font-size: 1rem;
   line-height: 1.6;
+}
+
+.card:hover,
+.card:focus-within {
+  transform: translateY(-4px) scale(1.01);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.3);
+  border-color: rgba(196, 181, 253, 0.4);
+  outline: 1px solid rgba(196, 181, 253, 0.35);
+  outline-offset: 1px;
+}
+
+.card:active {
+  transform: translateY(-1px) scale(0.995);
+  box-shadow: 0 9px 24px rgba(0, 0, 0, 0.18);
+  border-color: rgba(196, 181, 253, 0.2);
 }
 
 .name {
@@ -54,5 +71,19 @@ blockquote {
 @media (max-width: 640px) {
   .section {
     padding: var(--space-lg) 0 var(--space-md);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card {
+    transition: box-shadow 200ms ease, border-color 200ms ease,
+      outline-color 200ms ease;
+    transform: none;
+  }
+
+  .card:hover,
+  .card:focus-within,
+  .card:active {
+    transform: none;
   }
 }
