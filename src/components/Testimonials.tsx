@@ -37,7 +37,7 @@ const Testimonials = () => {
         <p className={styles.kicker}>Lo que dicen nuestros artistas</p>
         <h2>Historias que resuenan en cada escenario.</h2>
       </div>
-      <div className={styles.cards}>
+      <div className={`${styles.cards} grid container--dense`}>
         {testimonials.map((testimonial) => (
           <figure key={testimonial.name} className={styles.card}>
             <blockquote>“{testimonial.quote}”</blockquote>
