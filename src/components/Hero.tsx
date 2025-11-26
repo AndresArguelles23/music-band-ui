@@ -1,8 +1,8 @@
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { useEffect, useRef } from 'react'
+import { useLayoutEffect, useRef } from 'react'
 
-import { shouldReduceMotion } from '../utils/motion'
+import { isCoarseMotionDevice, shouldReduceMotion } from '../utils/motion'
 
 import styles from './Hero.module.css'
 
@@ -12,24 +12,61 @@ const heroGraphic = '/images/hero.avif'
 
 const Hero = () => {
   const sectionRef = useRef<HTMLElement>(null)
+  const contentRef = useRef<HTMLDivElement>(null)
+  const listRef = useRef<HTMLUListElement>(null)
+  const cardRef = useRef<HTMLDivElement>(null)
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const section = sectionRef.current
+    const content = contentRef.current
+    const list = listRef.current
+    const card = cardRef.current
     if (!section) return
 
     const context = gsap.context(() => {
       if (shouldReduceMotion()) return
 
-      gsap.from(section, {
-        opacity: 0,
-        y: 24,
-        duration: 0.8,
-        ease: 'power2.out',
-        scrollTrigger: {
-          trigger: section,
-          start: 'top 75%',
-          once: true,
-        },
+      const listItems = list ? Array.from(list.children) : []
+      const timelineTargets = [content, ...listItems, card].filter(Boolean)
+
+      if (timelineTargets.length) {
+        gsap
+          .timeline({
+            defaults: {
+              opacity: 0,
+              y: 24,
+              duration: 0.8,
+              ease: 'power2.out',
+            },
+            scrollTrigger: {
+              trigger: section,
+              start: 'top 75%',
+              once: true,
+            },
+          })
+          .from(timelineTargets, { stagger: 0.08 })
+      }
+
+      if (isCoarseMotionDevice() || !card) return
+
+      const gradientFrame = card.querySelector(`.${styles.gradientFrame}`)
+      const image = card.querySelector('img')
+      const parallaxTargets = [
+        { target: gradientFrame, yPercent: -6 },
+        { target: image, yPercent: 6 },
+      ].filter(({ target }) => target)
+
+      parallaxTargets.forEach(({ target, yPercent }) => {
+        gsap.to(target, {
+          yPercent,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: card,
+            start: 'top bottom',
+            end: 'bottom top',
+            scrub: true,
+          },
+        })
       })
     }, section)
 
@@ -38,7 +75,7 @@ const Hero = () => {
 
   return (
     <section ref={sectionRef} className={`${styles.hero} container`} id="artists">
-      <div className={styles.content}>
+      <div ref={contentRef} className={styles.content}>
         <p className={styles.eyebrow}>Banda en vivo a la carta</p>
         <h1>Eleva tu evento con un show que suena como tu playlist favorita</h1>
         <p className={styles.lede}>
@@ -46,7 +83,7 @@ const Hero = () => {
           técnico que llega listo para que solo te preocupes por disfrutar.
         </p>
 
-        <ul className={styles.featureList}>
+        <ul ref={listRef} className={styles.featureList}>
           <li>Setlist personalizado por mood, década o género.</li>
           <li>Ingeniería de audio, iluminación y backline incluidos.</li>
           <li>Coordinación con wedding planner y anfitriones sin fricciones.</li>
@@ -68,7 +105,7 @@ const Hero = () => {
       </div>
 
       <div className={styles.showcase}>
-        <div className={styles.photoCard}>
+        <div ref={cardRef} className={styles.photoCard}>
           <div className={styles.imageWrap}>
             <span className={styles.gradientFrame} aria-hidden="true" />
             <img className="imageHighlight" src={heroGraphic} alt="La banda tocando en vivo" loading="lazy" />
