@@ -1,9 +1,7 @@
 .hero {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: var(--space-xl);
   align-items: center;
   padding: calc(var(--space-xl) * 2) 0 calc(var(--space-xl) * 1.25);
+  --grid-gap: clamp(var(--space-lg), 4vw, calc(var(--space-xl) * 1.1));
 }
 
 .copy h1 {
@@ -86,12 +84,11 @@
 }
 
 .metrics {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-  gap: var(--space-md);
   margin: 0;
   padding: 0;
   list-style: none;
+  --grid-columns: repeat(auto-fit, minmax(120px, 1fr));
+  --grid-gap: clamp(var(--space-sm), 1.2vw, var(--space-lg));
 }
 
 .metrics div {
@@ -152,10 +149,10 @@
   margin-bottom: 0.5rem;
 }
 
-@media (min-width: 641px) and (max-width: 1024px) {
+@container (max-width: 64rem) {
   .hero {
-    grid-template-columns: 1fr;
-    gap: calc(var(--space-lg) + var(--space-sm));
+    --grid-columns: 1fr;
+    --grid-gap: calc(var(--space-lg) + var(--space-sm));
     padding: calc(var(--space-xl) * 1.75) 0 var(--space-xl);
   }
 
@@ -164,7 +161,7 @@
   }
 
   .metrics {
-    gap: calc(var(--space-lg) + var(--space-xs));
+    --grid-gap: calc(var(--space-lg) + var(--space-xs));
   }
 
   .visual {
@@ -181,9 +178,9 @@
   }
 }
 
-@media (max-width: 640px) {
+@container (max-width: 42rem) {
   .hero {
-    gap: var(--space-lg);
+    --grid-gap: var(--space-lg);
     padding: calc(var(--space-xl) + var(--space-md)) 0 var(--space-lg);
   }
 

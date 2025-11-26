@@ -15,6 +15,8 @@
   --space-md: 1rem;
   --space-lg: 1.5rem;
   --space-xl: 2rem;
+  --grid-columns: repeat(auto-fit, minmax(clamp(18rem, 24vw, 26rem), 1fr));
+  --grid-gap: clamp(var(--space-md), 2vw, var(--space-xl));
 }
 
 * {
@@ -52,9 +54,24 @@ p {
 }
 
 .container {
+  container-type: inline-size;
   margin: 0 auto;
   max-width: 1200px;
   padding-inline: var(--space-lg);
+}
+
+.container--wide {
+  max-width: 1320px;
+}
+
+.container--dense {
+  --grid-gap: clamp(var(--space-sm), 1.5vw, var(--space-md));
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: var(--grid-columns);
+  gap: var(--grid-gap);
 }
 
 @media (max-width: 640px) {

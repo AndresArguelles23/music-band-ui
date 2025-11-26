@@ -3,7 +3,7 @@ import styles from './About.module.css'
 
 const About = () => {
   return (
-    <section className={`${styles.section} container`} id="about">
+    <section className={`${styles.section} container container--wide`} id="about">
       <div className={styles.inner}>
         <header className={styles.header}>
           <p className={styles.overline}>Sobre el colectivo</p>
@@ -11,7 +11,7 @@ const About = () => {
           <p className={styles.subtitle}>Una presencia creativa</p>
         </header>
 
-        <div className={styles.grid}>
+        <div className={`${styles.grid} grid`}>
           <div className={styles.copy}>
             <p>
               Elite Klan nació entre salas de ensayo y escenarios improvisados, uniendo productores,

@@ -20,9 +20,7 @@
 
 .cards {
   margin-top: var(--space-lg);
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: var(--space-lg);
+  --grid-columns: repeat(auto-fit, minmax(260px, 1fr));
 }
 
 .card {
@@ -94,12 +92,6 @@ blockquote {
   font-size: 0.95rem;
 }
 
-@media (max-width: 640px) {
-  .section {
-    padding: var(--space-lg) 0 var(--space-md);
-  }
-}
-
 @media (prefers-reduced-motion: reduce) {
   .card {
     transition: box-shadow 200ms ease, border-color 200ms ease,
@@ -123,5 +115,11 @@ blockquote {
   .card:active .avatar {
     transform: none;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  }
+}
+
+@container (max-width: 40rem) {
+  .section {
+    padding: var(--space-lg) 0 var(--space-md);
   }
 }
