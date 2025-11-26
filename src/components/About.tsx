@@ -39,7 +39,12 @@ const About = () => {
           </div>
 
           <figure className={styles.media}>
-            <img src={ensembleImage} alt="Equipo Elite Klan reunido en una mesa de planificación" loading="lazy" />
+            <img
+              className="imageHighlight"
+              src={ensembleImage}
+              alt="Equipo Elite Klan reunido en una mesa de planificación"
+              loading="lazy"
+            />
             <figcaption>Equipo creativo en sintonía: gestión, producción y narrativa en un mismo pulso.</figcaption>
           </figure>
         </div>

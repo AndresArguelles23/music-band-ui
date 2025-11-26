@@ -108,6 +108,42 @@ ol {
   line-height: 1.75;
 }
 
+.imageHighlight {
+  position: relative;
+  display: block;
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow:
+    0 18px 38px rgba(0, 0, 0, 0.35),
+    0 0 0 10px rgba(99, 102, 241, 0.08),
+    0 24px 60px rgba(34, 211, 238, 0.18);
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+  overflow: hidden;
+  transition: transform 180ms ease, box-shadow 220ms ease, filter 220ms ease;
+  filter: saturate(1.05) contrast(1.02);
+}
+
+.imageHighlight:hover,
+.imageHighlight:focus-visible {
+  transform: translateY(-4px) scale(1.01);
+  box-shadow:
+    0 20px 48px rgba(0, 0, 0, 0.4),
+    0 0 0 12px rgba(99, 102, 241, 0.12),
+    0 30px 70px rgba(34, 211, 238, 0.22);
+  filter: saturate(1.12) contrast(1.06);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .imageHighlight {
+    transition: box-shadow 180ms ease, filter 180ms ease;
+  }
+
+  .imageHighlight:hover,
+  .imageHighlight:focus-visible {
+    transform: none;
+  }
+}
+
 ::selection {
   background: rgba(99, 102, 241, 0.35);
   color: #f8fafc;
