@@ -1,4 +1,5 @@
 import featureIcon from '../assets/spark-icon.svg'
+import { useSectionVisibility } from '../hooks/useSectionVisibility'
 import styles from './Features.module.css'
 
 const services = [
@@ -41,8 +42,14 @@ const services = [
 ]
 
 const Features = () => {
+  const { ref, isVisible } = useSectionVisibility()
+
   return (
-    <section className={`${styles.section} container`} id="features">
+    <section
+      ref={ref}
+      className={`${styles.section} container ${isVisible ? 'is-visible' : ''}`}
+      id="features"
+    >
       <div className={styles.header}>
         <p className={styles.kicker}>Servicios clave</p>
         <h2>Sonido, estrategia y logística sin perder el estilo.</h2>

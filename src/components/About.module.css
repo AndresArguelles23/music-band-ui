@@ -1,5 +1,8 @@
 .section {
   padding: var(--section-spacing) 0;
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
 }
 
 .inner {
@@ -35,6 +38,24 @@
 
 .inner h2 {
   font-size: clamp(2rem, 3vw + 1.25rem, 2.75rem);
+}
+
+.section::after {
+  content: '';
+  position: absolute;
+  inset: -12% -6%;
+  background: radial-gradient(circle at 18% 24%, rgba(99, 102, 241, 0.24), transparent 35%),
+    linear-gradient(120deg, rgba(99, 102, 241, 0.1), rgba(94, 234, 212, 0.08), rgba(168, 85, 247, 0.1));
+  opacity: 0;
+  clip-path: ellipse(35% 32% at 24% 28%);
+  transition: opacity 620ms ease, clip-path 900ms ease;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.section.is-visible::after {
+  opacity: 1;
+  clip-path: ellipse(80% 80% at 50% 50%);
 }
 
 .subtitle {

@@ -1,10 +1,17 @@
+import { useSectionVisibility } from '../hooks/useSectionVisibility'
 import styles from './Hero.module.css'
 
 const heroGraphic = '/images/hero.avif'
 
 const Hero = () => {
+  const { ref, isVisible } = useSectionVisibility()
+
   return (
-    <section className={`${styles.hero} container`} id="artists">
+    <section
+      ref={ref}
+      className={`${styles.hero} container ${isVisible ? 'is-visible' : ''}`}
+      id="artists"
+    >
       <div className={styles.copy}>
         <p className={styles.tagline}>Shows para todo tipo de eventos</p>
         <h1>Contrata a la banda que convierte tu celebración en un concierto</h1>
