@@ -32,12 +32,26 @@
   text-decoration: none;
   padding: 0.35rem 0.45rem;
   border-radius: 0.5rem;
-  transition: background-color 0.2s ease, color 0.2s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease, color 0.2s ease,
+    opacity 0.2s ease;
 }
 
 .navLinks a:hover {
   background: rgba(255, 255, 255, 0.08);
   color: #e2e8f0;
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 8px 20px rgba(99, 102, 241, 0.25);
+}
+
+.navLinks a:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.5), 0 8px 20px rgba(99, 102, 241, 0.25);
+}
+
+.navLinks a:active {
+  transform: translateY(0) scale(0.98);
+  opacity: 0.9;
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.2);
 }
 
 .cta {
@@ -48,6 +62,24 @@
   font-weight: 700;
   text-decoration: none;
   box-shadow: 0 10px 30px rgba(99, 102, 241, 0.35);
+  transition: transform 0.22s ease, box-shadow 0.22s ease, background-color 0.22s ease, color 0.22s ease,
+    opacity 0.22s ease;
+}
+
+.cta:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 14px 36px rgba(99, 102, 241, 0.45);
+}
+
+.cta:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.5), 0 10px 30px rgba(99, 102, 241, 0.35);
+}
+
+.cta:active {
+  transform: translateY(0) scale(0.985);
+  opacity: 0.95;
+  box-shadow: 0 8px 20px rgba(99, 102, 241, 0.3);
 }
 
 @media (max-width: 768px) {
