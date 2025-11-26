@@ -6,12 +6,16 @@
   max-width: 1120px;
   color: var(--color-text);
   display: grid;
-  gap: clamp(var(--space-md), 2vw, var(--space-lg));
+  gap: clamp(var(--space-lg), 3vw, calc(var(--section-gap) * 0.95));
 }
 
 .header {
   display: grid;
   gap: var(--space-xs);
+  align-content: start;
+  padding-left: var(--space-sm);
+  border-left: 3px solid rgba(99, 102, 241, 0.6);
+  max-width: 640px;
 }
 
 .overline {
@@ -41,14 +45,15 @@
 .grid {
   display: grid;
   grid-template-columns: 1.1fr 0.9fr;
-  gap: clamp(var(--space-md), 3vw, var(--space-xl));
+  gap: clamp(var(--space-lg), 3vw, calc(var(--space-xl) * 1.1));
   align-items: center;
 }
 
 .copy {
   display: grid;
-  gap: var(--space-sm);
+  gap: var(--content-gap);
   color: var(--color-text-muted);
+  max-width: 680px;
 }
 
 .copy p + p {

@@ -11,5 +11,5 @@
 main {
   display: flex;
   flex-direction: column;
-  gap: var(--section-gap);
+  gap: calc(var(--section-gap) * 1.1);
 }
