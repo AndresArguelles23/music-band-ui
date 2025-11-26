@@ -161,58 +161,60 @@ const Navigation = () => {
           style={{ '--progress': `${navProgress}%` } as CSSProperties}
         />
       </div>
-      <div className={styles.brand}>Elite Klan</div>
-      <nav className={styles.navLinks} aria-label="Primary">
-        {navItems.map((item) => (
-          <a key={item.href} href={item.href} onClick={() => handleNavClick(item.href)}>
-            {item.label}
-          </a>
-        ))}
-      </nav>
-      <div className={styles.actions}>
-        <button
-          type="button"
-          className={styles.menuButton}
-          onClick={handleToggleMenu}
-          onBlur={handleBlur}
-          aria-expanded={menuOpen}
-          aria-controls="primary-menu"
-          aria-label={menuOpen ? 'Cerrar menú' : 'Abrir menú'}
-          ref={menuButtonRef}
-        >
-          <span className={styles.menuIcon} aria-hidden="true">
-            <span className={`${styles.bar} ${menuOpen ? styles.barTopOpen : ''}`} />
-            <span className={`${styles.bar} ${menuOpen ? styles.barMiddleOpen : ''}`} />
-            <span className={`${styles.bar} ${menuOpen ? styles.barBottomOpen : ''}`} />
-          </span>
-          <span className={styles.menuLabel}>Menú</span>
-        </button>
-        <a className={styles.cta} href="#contact">
-          Reserva ahora
-        </a>
-      </div>
-
-      <div
-        id="primary-menu"
-        className={`${styles.mobilePanel} ${menuOpen ? styles.mobilePanelOpen : ''}`}
-        role="menu"
-        aria-hidden={!menuOpen}
-        onBlur={handleBlur}
-        ref={panelRef}
-      >
-        {navItems.map((item) => (
-          <a
-            key={item.href}
-            href={item.href}
-            role="menuitem"
-            onClick={() => handleNavClick(item.href)}
+      <div className={styles.inner}>
+        <div className={styles.brand}>Elite Klan</div>
+        <nav className={styles.navLinks} aria-label="Primary">
+          {navItems.map((item) => (
+            <a key={item.href} href={item.href} onClick={() => handleNavClick(item.href)}>
+              {item.label}
+            </a>
+          ))}
+        </nav>
+        <div className={styles.actions}>
+          <button
+            type="button"
+            className={styles.menuButton}
+            onClick={handleToggleMenu}
+            onBlur={handleBlur}
+            aria-expanded={menuOpen}
+            aria-controls="primary-menu"
+            aria-label={menuOpen ? 'Cerrar menú' : 'Abrir menú'}
+            ref={menuButtonRef}
           >
-            {item.label}
+            <span className={styles.menuIcon} aria-hidden="true">
+              <span className={`${styles.bar} ${menuOpen ? styles.barTopOpen : ''}`} />
+              <span className={`${styles.bar} ${menuOpen ? styles.barMiddleOpen : ''}`} />
+              <span className={`${styles.bar} ${menuOpen ? styles.barBottomOpen : ''}`} />
+            </span>
+            <span className={styles.menuLabel}>Menú</span>
+          </button>
+          <a className={styles.cta} href="#contact">
+            Reserva ahora
           </a>
-        ))}
-        <a className={`${styles.cta} ${styles.mobileCta}`} href="#contact" onClick={closeMenu}>
-          Reserva ahora
-        </a>
+        </div>
+
+        <div
+          id="primary-menu"
+          className={`${styles.mobilePanel} ${menuOpen ? styles.mobilePanelOpen : ''}`}
+          role="menu"
+          aria-hidden={!menuOpen}
+          onBlur={handleBlur}
+          ref={panelRef}
+        >
+          {navItems.map((item) => (
+            <a
+              key={item.href}
+              href={item.href}
+              role="menuitem"
+              onClick={() => handleNavClick(item.href)}
+            >
+              {item.label}
+            </a>
+          ))}
+          <a className={`${styles.cta} ${styles.mobileCta}`} href="#contact" onClick={closeMenu}>
+            Reserva ahora
+          </a>
+        </div>
       </div>
     </header>
   )
