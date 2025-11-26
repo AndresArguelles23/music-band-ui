@@ -10,34 +10,44 @@ type VideoShowcase = {
 
 const videos: VideoShowcase[] = [
   {
-    title: 'Live Session - Versión acústica',
-    description:
-      'Close ups de cuerdas, tomas laterales y planos cálidos que capturan el vibe íntimo del grupo en estudio.',
-    videoId: 'ktvTqknDobU',
+    title: 'Elite Klan - En Vivo (Primera Parte)',
+    description: 'Inicio del show con tomas de escenario y close ups del público entrando en calor.',
+    videoId: 'BUicDRuAGwk',
   },
   {
-    title: 'Aftermovie - Festival Bruma',
-    description:
-      'Compilado de tomas aéreas y crowd shots con drops sincronizados a los beats para redes sociales.',
-    videoId: 'kXYiU_JCYtU',
+    title: 'Elite Klan - En Vivo (Segunda Parte)',
+    description: 'Seguimos el set con luces bajas y un montaje que resalta la conexión con la audiencia.',
+    videoId: 'kADYLFkNeVg',
   },
   {
-    title: 'Versión en vivo - Arena Central',
-    description:
-      'Edición multitrack con cortes rápidos y flashes de iluminación para mostrar la energía del show principal.',
-    videoId: '1w7OgIMMRc4',
+    title: 'Elite Klan - En Vivo (Tercera Parte)',
+    description: 'Planos medios y paneos rápidos para capturar los coros y la percusión del directo.',
+    videoId: 'fvNVMwPhvig',
   },
   {
-    title: 'Reel vertical - Backstage y prueba de sonido',
-    description:
-      'Formato 9:16 con detalles de instrumentos, risas de camerino y un teaser del arranque del concierto.',
-    videoId: 'hTWKbfoikeg',
+    title: 'Elite Klan - En Vivo (Cuarta Parte)',
+    description: 'Tomas frontales del escenario y barridos de cámara que siguen cada cambio de ritmo.',
+    videoId: '4D2YErFovwg',
   },
   {
-    title: 'Sesión íntima - Versión unplugged',
-    description:
-      'Micrófonos de ambiente y paneos suaves para acompañar armonías vocales en un set minimalista.',
-    videoId: 'a7SouU3ECpU',
+    title: 'Elite Klan - En Vivo (Quinta Parte)',
+    description: 'Luces de contra, tomas de baterías y detalles de cuerdas para remarcar la dinámica.',
+    videoId: '7LAQsuH0I_I',
+  },
+  {
+    title: 'Elite Klan - En Vivo (Sexta Parte)',
+    description: 'Cámara en grúa y cortes a reacción del público en los momentos más explosivos.',
+    videoId: '2Y1XmcnTD3U',
+  },
+  {
+    title: 'Elite Klan - En Vivo (Séptima Parte)',
+    description: 'Perspectivas laterales que siguen solos de guitarra y juego de luces sincronizado.',
+    videoId: '0IHRXthx4LQ',
+  },
+  {
+    title: 'Elite Klan - En Vivo (Octava Parte)',
+    description: 'Plano general final con saludo a cámara y cierre del repertorio ante el público.',
+    videoId: 'qTgNOWDFpmc',
   },
 ]
 
