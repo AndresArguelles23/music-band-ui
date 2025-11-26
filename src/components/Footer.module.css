@@ -136,11 +136,6 @@
   font-weight: 700;
 }
 
-.role {
-  margin: 0.2rem 0 0;
-  color: var(--color-text-muted);
-}
-
 .links {
   display: flex;
   flex-direction: column;
