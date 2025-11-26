@@ -52,18 +52,19 @@
 }
 
 .tagline {
-  display: inline-block;
-  padding: calc(var(--space-xs) * 1.35) calc(var(--space-sm) * 1.2);
+  display: inline-flex;
+  align-items: center;
+  gap: calc(var(--space-2xs) * 1.2);
+  padding: calc(var(--space-2xs) * 1.5) calc(var(--space-sm) * 0.9);
   border-radius: 999px;
-  background: rgba(99, 102, 241, 0.16);
+  background: rgba(99, 102, 241, 0.12);
   color: #dbeafe;
+  border: 1px solid rgba(99, 102, 241, 0.4);
   font-weight: 800;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  font-size: 0.92rem;
+  font-size: 0.88rem;
   width: fit-content;
-  box-shadow: 0 14px 30px rgba(99, 102, 241, 0.18);
-  transform: skew(-6deg);
 }
 
 .actions {
