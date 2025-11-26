@@ -28,7 +28,7 @@ const Hero = () => {
             <span className={styles.badgeSecondary}>Luz y sonido incluidos</span>
           </div>
           <div className={styles.imagePanel}>
-            <img src={heroGraphic} alt="Escena musical en vivo" loading="lazy" />
+            <img className="imageHighlight" src={heroGraphic} alt="Escena musical en vivo" loading="lazy" />
             <span className={styles.cornerPulse} aria-hidden="true" />
           </div>
         </div>
