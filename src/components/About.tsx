@@ -1,7 +1,6 @@
 import styles from './About.module.css'
 
-const ensembleImage =
-  'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=1200&q=80'
+const ensembleImage = '/images/about-ensemble.jpg.avif'
 
 const About = () => {
   return (

@@ -11,8 +11,7 @@ const services = [
       'Dinámicas participativas, giveaways y cápsulas cortas para redes sociales',
       'Producción ágil para venues, festivales o activaciones con marcas',
     ],
-    image:
-      'https://images.unsplash.com/photo-1501612780327-45045538702b?auto=format&fit=crop&w=1200&q=80',
+    image: '/images/service-perreo.avif',
     alt: 'DJ animando a una multitud en un club con luces rosas',
   },
   {
@@ -24,8 +23,7 @@ const services = [
       'Coordinación con tour managers, hospitality, acreditaciones y seguridad',
       'Integración con ticketing, experiencias VIP y métricas post-evento',
     ],
-    image:
-      'https://images.unsplash.com/photo-1489515217757-5fd1be406fef?auto=format&fit=crop&w=1200&q=80',
+    image: '/images/service-eventos.avif',
     alt: 'Escenario iluminado con cabinas de producción durante un show',
   },
   {
@@ -37,8 +35,7 @@ const services = [
       'Guion, dirección y edición con entregables en múltiples formatos y ratios',
       'Entrega rápida de highlights para social media y campañas posteriores',
     ],
-    image:
-      'https://images.unsplash.com/photo-1507878866276-a947ef722fee?auto=format&fit=crop&w=1200&q=80',
+    image: '/images/service-audiovisual.avif',
     alt: 'Camarógrafo grabando un concierto con luces moradas',
   },
 ]
