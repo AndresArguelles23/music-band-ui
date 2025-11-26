@@ -1,9 +1,9 @@
 .hero {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: var(--space-xl);
+  gap: var(--section-gap);
   align-items: center;
-  padding: calc(var(--space-xl) * 2) 0 calc(var(--space-xl) * 1.25);
+  padding: calc(var(--section-spacing) * 1.25) 0 var(--section-spacing);
 }
 
 .copy h1 {
@@ -136,7 +136,7 @@
   .hero {
     grid-template-columns: 1fr;
     gap: calc(var(--space-lg) + var(--space-sm));
-    padding: calc(var(--space-xl) * 1.75) 0 var(--space-xl);
+    padding: calc(var(--section-spacing) * 1.1) 0 var(--section-spacing);
   }
 
   .actions {
@@ -159,6 +159,6 @@
 @media (max-width: 640px) {
   .hero {
     gap: var(--space-lg);
-    padding: calc(var(--space-xl) + var(--space-md)) 0 var(--space-lg);
+    padding: var(--section-spacing) 0 calc(var(--section-spacing) * 0.75);
   }
 }

@@ -1,7 +1,7 @@
 .section {
-  padding: var(--space-xl) 0;
+  padding: var(--section-spacing) 0;
   display: grid;
-  gap: var(--space-lg);
+  gap: var(--section-gap);
 }
 
 .header {
@@ -124,8 +124,8 @@
 
 @media (max-width: 640px) {
   .section {
-    padding: var(--space-lg) 0;
-    gap: var(--space-md);
+    padding: calc(var(--section-spacing) * 0.85) 0;
+    gap: var(--section-gap);
   }
 
   .trigger {

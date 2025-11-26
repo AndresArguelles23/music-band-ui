@@ -1,5 +1,5 @@
 .footer {
-  padding: var(--space-xl) 0 calc(var(--space-xl) + var(--space-lg));
+  padding: var(--section-spacing) 0 calc(var(--section-spacing) * 1.1);
   display: flex;
   flex-direction: column;
   gap: var(--space-lg);
@@ -102,6 +102,6 @@
 
 @media (max-width: 640px) {
   .footer {
-    padding: var(--space-lg) 0 var(--space-xl);
+    padding: calc(var(--section-spacing) * 0.85) 0 var(--section-spacing);
   }
 }
