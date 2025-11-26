@@ -28,111 +28,9 @@
 }
 
 .layout {
-  display: grid;
-  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.2fr);
-  gap: var(--section-gap);
-}
-
-.featured {
-  background: radial-gradient(circle at 20% 20%, rgba(99, 102, 241, 0.2), transparent 45%),
-    radial-gradient(circle at 80% 30%, rgba(34, 211, 238, 0.12), transparent 50%),
-    rgba(255, 255, 255, 0.02);
-  border: 1px solid var(--color-border);
-  border-radius: 20px;
-  padding: clamp(1.5rem, 3vw, 2rem);
-  color: var(--color-text);
-  display: grid;
-  grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.2fr);
-  gap: var(--space-lg);
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
-}
-
-.featuredBadge {
-  grid-column: 1 / -1;
-  justify-self: flex-start;
-  padding: 0.25rem 0.75rem;
-  background: rgba(34, 211, 238, 0.16);
-  border: 1px solid rgba(34, 211, 238, 0.35);
-  color: #a5f3fc;
-  border-radius: 999px;
-  font-weight: 700;
-  letter-spacing: 0.05em;
-}
-
-.featuredArtwork img {
-  width: 100%;
-  border-radius: 16px;
-  border: 1px solid rgba(255, 255, 255, 0.07);
-  box-shadow: 0 16px 44px rgba(0, 0, 0, 0.28);
-  object-fit: cover;
-  max-height: 320px;
-}
-
-.featuredInfo h3 {
-  font-size: clamp(1.65rem, 3vw, 2rem);
-  margin: 0 0 var(--space-xs);
-}
-
-.featuredSubtitle {
-  color: var(--color-text-soft);
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  font-weight: 700;
-  margin: 0 0 var(--space-xxs);
-}
-
-.featuredArtist {
-  color: #e2e8f0;
-  font-weight: 600;
-  margin-bottom: var(--space-sm);
-}
-
-.featuredDescription {
-  color: var(--color-text-muted);
-  margin-bottom: var(--space-md);
-}
-
-.featuredActions {
   display: flex;
-  gap: var(--space-sm);
-  flex-wrap: wrap;
-}
-
-.primaryButton,
-.secondaryButton {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.35rem;
-  padding: 0.75rem 1.1rem;
-  border-radius: 12px;
-  font-weight: 700;
-  text-decoration: none;
-  transition: transform 150ms ease, box-shadow 150ms ease, background-color 150ms ease,
-    border-color 150ms ease, color 150ms ease;
-  border: 1px solid transparent;
-}
-
-.primaryButton {
-  background: var(--gradient-accent);
-  color: #0b1021;
-  box-shadow: 0 12px 30px rgba(99, 102, 241, 0.35);
-}
-
-.primaryButton:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 16px 40px rgba(99, 102, 241, 0.45);
-}
-
-.secondaryButton {
-  background: rgba(255, 255, 255, 0.04);
-  color: var(--color-text);
-  border-color: rgba(255, 255, 255, 0.08);
-}
-
-.secondaryButton:hover {
-  border-color: rgba(199, 210, 254, 0.4);
-  color: #c7d2fe;
+  flex-direction: column;
+  gap: var(--section-gap);
 }
 
 .listCard {
@@ -318,11 +216,7 @@
 
 @media (max-width: 960px) {
   .layout {
-    grid-template-columns: 1fr;
-  }
-
-  .featured {
-    grid-template-columns: 1fr;
+    gap: calc(var(--section-gap) * 0.85);
   }
 }
 
@@ -342,8 +236,6 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .primaryButton,
-  .secondaryButton,
   .trackRow,
   .iconButton {
     transition: none;
