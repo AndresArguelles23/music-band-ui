@@ -1,4 +1,7 @@
-import { useId, useState } from 'react'
+import gsap from 'gsap'
+import { useEffect, useId, useRef, useState } from 'react'
+
+import { canUseMotion } from '../utils/motion'
 
 import styles from './FAQ.module.css'
 
@@ -32,11 +35,76 @@ const faqs: FAQItem[] = [
 
 const FAQ = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(0)
+  const panelRefs = useRef<HTMLDivElement[]>([])
+  const panelTimelines = useRef<Record<number, gsap.core.Timeline>>({})
   const panelPrefix = useId()
 
-  const toggleItem = (index: number) => {
-    setOpenIndex((current) => (current === index ? null : index))
+  const reversePanel = (index: number | null) => {
+    if (index === null || !canUseMotion()) return
+
+    const timeline = panelTimelines.current[index]
+    const panel = panelRefs.current[index]
+
+    if (timeline) {
+      timeline.timeScale(1)
+      timeline.reverse()
+    } else if (panel) {
+      gsap.to(panel, { height: 0, opacity: 0, duration: 0.18, ease: 'power1.out' })
+    }
   }
+
+  const toggleItem = (index: number) => {
+    setOpenIndex((current) => {
+      const isClosing = current === index
+
+      reversePanel(current)
+
+      return isClosing ? null : index
+    })
+  }
+
+  const handleEnter = (target: EventTarget & HTMLElement) => {
+    if (!canUseMotion()) return
+
+    gsap.to(target, { duration: 0.18, scale: 1.02, y: -2, overwrite: true })
+  }
+
+  const handleLeave = (target: EventTarget & HTMLElement) => {
+    if (!canUseMotion()) return
+
+    gsap.to(target, { duration: 0.18, scale: 1, y: 0, overwrite: true })
+  }
+
+  useEffect(() => {
+    if (openIndex === null || !canUseMotion()) return
+
+    const panel = panelRefs.current[openIndex]
+
+    if (!panel) return
+
+    const existingTimeline = panelTimelines.current[openIndex]
+
+    if (existingTimeline) {
+      existingTimeline.play()
+      return
+    }
+
+    const timeline = gsap.timeline({ defaults: { ease: 'power1.out' } })
+
+    timeline
+      .from(panel, { height: 0, opacity: 0, duration: 0.18 })
+      .to(panel, { height: 'auto', duration: 0, immediateRender: false })
+
+    panelTimelines.current[openIndex] = timeline
+  }, [openIndex])
+
+  useEffect(() => {
+    const timelines = panelTimelines.current
+
+    return () => {
+      Object.values(timelines).forEach((timeline) => timeline.kill())
+    }
+  }, [])
 
   return (
     <section className={`${styles.section} container`} id="faq">
@@ -65,6 +133,10 @@ const FAQ = () => {
                   aria-expanded={isOpen}
                   aria-controls={panelId}
                   onClick={() => toggleItem(index)}
+                  onMouseEnter={(event) => handleEnter(event.currentTarget)}
+                  onFocus={(event) => handleEnter(event.currentTarget)}
+                  onMouseLeave={(event) => handleLeave(event.currentTarget)}
+                  onBlur={(event) => handleLeave(event.currentTarget)}
                 >
                   <span>{item.question}</span>
                   <span aria-hidden className={`${styles.icon} ${isOpen ? styles.iconOpen : ''}`}>
@@ -78,6 +150,11 @@ const FAQ = () => {
                 role="region"
                 aria-labelledby={buttonId}
                 className={`${styles.panel} ${isOpen ? styles.panelOpen : ''}`}
+                ref={(element) => {
+                  if (element) {
+                    panelRefs.current[index] = element
+                  }
+                }}
               >
                 <p>{item.answer}</p>
               </div>

@@ -1,3 +1,6 @@
+import gsap from 'gsap'
+
+import { canUseMotion } from '../utils/motion'
 import styles from './Footer.module.css'
 
 type Contact = {
@@ -71,6 +74,18 @@ const socials = [
 ]
 
 const Footer = () => {
+  const handleEnter = (target: EventTarget & HTMLElement) => {
+    if (!canUseMotion()) return
+
+    gsap.to(target, { duration: 0.18, scale: 1.02, y: -2, overwrite: true })
+  }
+
+  const handleLeave = (target: EventTarget & HTMLElement) => {
+    if (!canUseMotion()) return
+
+    gsap.to(target, { duration: 0.18, scale: 1, y: 0, overwrite: true })
+  }
+
   return (
     <footer className={`${styles.footer} container`} id="contact">
       <div className={styles.header}>
@@ -92,12 +107,26 @@ const Footer = () => {
             </div>
             <div className={styles.links}>
               {email && (
-                <a className={styles.contactLink} href={`mailto:${email}`}>
+                <a
+                  className={styles.contactLink}
+                  href={`mailto:${email}`}
+                  onMouseEnter={(event) => handleEnter(event.currentTarget)}
+                  onFocus={(event) => handleEnter(event.currentTarget)}
+                  onMouseLeave={(event) => handleLeave(event.currentTarget)}
+                  onBlur={(event) => handleLeave(event.currentTarget)}
+                >
                   <span className={styles.linkLabel}>{email}</span>
                 </a>
               )}
               {phone && (
-                <a className={styles.contactLink} href={`tel:${phone.replace(/\s+/g, '')}`}>
+                <a
+                  className={styles.contactLink}
+                  href={`tel:${phone.replace(/\s+/g, '')}`}
+                  onMouseEnter={(event) => handleEnter(event.currentTarget)}
+                  onFocus={(event) => handleEnter(event.currentTarget)}
+                  onMouseLeave={(event) => handleLeave(event.currentTarget)}
+                  onBlur={(event) => handleLeave(event.currentTarget)}
+                >
                   <span aria-hidden="true">📞</span>
                   <span className={styles.linkLabel}>{phone}</span>
                 </a>
@@ -110,7 +139,14 @@ const Footer = () => {
       <div className={styles.brandRow}>
         <div className={styles.brandIdentity}>
           <p className={styles.brandName}>Elite Klan</p>
-          <a className={styles.contactLink} href="mailto:kyllarecords@hotmail.com">
+          <a
+            className={styles.contactLink}
+            href="mailto:kyllarecords@hotmail.com"
+            onMouseEnter={(event) => handleEnter(event.currentTarget)}
+            onFocus={(event) => handleEnter(event.currentTarget)}
+            onMouseLeave={(event) => handleLeave(event.currentTarget)}
+            onBlur={(event) => handleLeave(event.currentTarget)}
+          >
             <span className={styles.linkLabel}>kyllarecords@hotmail.com</span>
           </a>
         </div>
@@ -126,6 +162,10 @@ const Footer = () => {
                 target="_blank"
                 rel="noreferrer"
                 style={{ color: brandColor, borderColor: `${brandColor}59`, backgroundColor: `${brandColor}14` }}
+                onMouseEnter={(event) => handleEnter(event.currentTarget)}
+                onFocus={(event) => handleEnter(event.currentTarget)}
+                onMouseLeave={(event) => handleLeave(event.currentTarget)}
+                onBlur={(event) => handleLeave(event.currentTarget)}
               >
                 <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" className={styles.icon} role="img">
                   <title>{name}</title>
