@@ -3,7 +3,7 @@ import styles from './Hero.module.css'
 
 const Hero = () => {
   return (
-    <section className={`${styles.hero} container container--wide grid`} id="artists">
+    <section className={`${styles.hero} container`} id="artists">
       <div className={styles.copy}>
         <p className={styles.tagline}>Producción y management musical</p>
         <h1>Haz que tu banda se escuche en todas partes</h1>
@@ -19,7 +19,7 @@ const Hero = () => {
             Conoce nuestros servicios
           </a>
         </div>
-        <dl className={`${styles.metrics} grid`}>
+        <dl className={styles.metrics}>
           <div>
             <dt>Giras completadas</dt>
             <dd>120+</dd>
