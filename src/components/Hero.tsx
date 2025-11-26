@@ -36,10 +36,6 @@ const Hero = () => {
 
       <div className={styles.showcase}>
         <div className={styles.photoCard}>
-          <div className={styles.cardHeader}>
-            <span className={styles.pill}>Set cinematográfico</span>
-            <span className={styles.pulse} aria-hidden="true" />
-          </div>
           <div className={styles.imageWrap}>
             <span className={styles.gradientFrame} aria-hidden="true" />
             <img className="imageHighlight" src={heroGraphic} alt="La banda tocando en vivo" loading="lazy" />
