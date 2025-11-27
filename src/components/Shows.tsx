@@ -58,7 +58,7 @@ const videos: VideoShowcase[] = [
 ]
 
 const Shows = () => {
-  const [activeIndex, setActiveIndex] = useState(videos.length)
+  const [activeIndex, setActiveIndex] = useState(1)
   const [isPaused, setIsPaused] = useState(false)
   const [isInstant, setIsInstant] = useState(false)
   const wheelLockRef = useRef(false)
@@ -66,19 +66,21 @@ const Shows = () => {
   const trackRef = useRef<HTMLDivElement>(null)
   const activeIndexRef = useRef(activeIndex)
 
-  const loopedVideos = [...videos, ...videos, ...videos]
+  const extendedVideos = [videos[videos.length - 1], ...videos, videos[0]]
+
+  const getRealIndex = (index: number) => ((index - 1 + videos.length) % videos.length + videos.length) % videos.length
 
   useEffect(() => {
     activeIndexRef.current = activeIndex
   }, [activeIndex])
 
   const goTo = (index: number) => {
-    const candidates = [index, index + videos.length, index + videos.length * 2]
-    const target = candidates.reduce((closest, current) =>
-      Math.abs(current - activeIndex) < Math.abs(closest - activeIndex) ? current : closest,
-    )
+    const current = getRealIndex(activeIndex)
+    const forward = (index - current + videos.length) % videos.length
+    const backward = forward - videos.length
+    const step = Math.abs(forward) <= Math.abs(backward) ? forward : backward
 
-    setActiveIndex(target)
+    setActiveIndex((prev) => prev + step)
   }
 
   const handleDirection = (direction: 'prev' | 'next') => {
@@ -101,10 +103,15 @@ const Shows = () => {
 
     const handleTransitionEnd = () => {
       const currentIndex = activeIndexRef.current
-      if (currentIndex >= videos.length * 2 || currentIndex < videos.length) {
-        const normalized = ((currentIndex % videos.length) + videos.length) % videos.length
+
+      if (currentIndex === 0) {
         setIsInstant(true)
-        setActiveIndex(videos.length + normalized)
+        setActiveIndex(videos.length)
+      }
+
+      if (currentIndex === videos.length + 1) {
+        setIsInstant(true)
+        setActiveIndex(1)
       }
     }
 
@@ -157,10 +164,9 @@ const Shows = () => {
     card.style.setProperty('--tilt-y', '0deg')
   }
 
-  const visibleIndex = ((activeIndex % videos.length) + videos.length) % videos.length
+  const visibleIndex = getRealIndex(activeIndex)
 
-  const isCardVisible = (idx: number) =>
-    ((idx % videos.length) + videos.length) % videos.length === visibleIndex
+  const isCardVisible = (idx: number) => getRealIndex(idx) === visibleIndex
 
   useEffect(() => {
     const section = sectionRef.current
@@ -220,7 +226,7 @@ const Shows = () => {
             className={styles.track}
             style={{ ['--index' as string]: activeIndex, transition: isInstant ? 'none' : undefined }}
           >
-            {loopedVideos.map((video, idx) => {
+            {extendedVideos.map((video, idx) => {
               const isVisible = isCardVisible(idx)
               const isCurrent = idx === activeIndex
 
